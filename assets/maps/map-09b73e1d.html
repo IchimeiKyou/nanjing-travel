@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Day 1 · 钟山风景区</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<style>
+  html,body,#map{height:100%;margin:0;background:#f8fafc}
+  .leaflet-container{font:14px/1.45 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}
+</style>
+</head>
+<body>
+<div id="map" role="img" aria-label="Day 1 · 钟山风景区"></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const data = {"title": "Day 1 · 钟山风景区", "points": [{"name": "中山陵", "lat": 32.0645, "lon": 118.848}, {"name": "音乐台", "lat": 32.0612, "lon": 118.8505}, {"name": "明孝陵", "lat": 32.0585, "lon": 118.8365}, {"name": "美龄宫", "lat": 32.0605, "lon": 118.8295}], "routes": [{"from": [32.0645, 118.848], "to": [32.0612, 118.8505], "label": "步行 10 分"}, {"from": [32.0612, 118.8505], "to": [32.0585, 118.8365], "label": "观光车"}, {"from": [32.0585, 118.8365], "to": [32.0605, 118.8295], "label": "步行 15 分"}]};
+const map = L.map("map", {scrollWheelZoom: true});
+const TILES = [
+  {
+    url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}",
+    options: {
+      maxZoom: 19,
+      attribution: "Tiles &copy; Esri"
+    }
+  },
+  {
+    url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}",
+    options: {
+      maxZoom: 19,
+      attribution: "Tiles &copy; Esri"
+    }
+  }
+];
+let tileIdx = 0;
+let switched = false;
+let tiles = L.tileLayer(TILES[0].url, TILES[0].options).addTo(map);
+tiles.on("tileerror", function () {
+  if (switched || tileIdx >= TILES.length - 1) return;
+  switched = true;
+  tileIdx += 1;
+  map.removeLayer(tiles);
+  tiles = L.tileLayer(TILES[tileIdx].url, TILES[tileIdx].options).addTo(map);
+});
+const layer = L.featureGroup();
+data.points.forEach((p, i) => {
+  const label = p.name ? (i + 1) + ". " + p.name : String(i + 1);
+  L.marker([p.lat, p.lon]).bindPopup(label).addTo(layer);
+});
+(data.routes || []).forEach((r) => {
+  if (!r.from || !r.to) return;
+  L.polyline([r.from, r.to], {color: "#dc2626", weight: 3, opacity: 0.75, dashArray: "6 6"}).addTo(layer);
+});
+layer.addTo(map);
+if (data.points.length === 1) {
+  map.setView([data.points[0].lat, data.points[0].lon], 14);
+} else {
+  map.fitBounds(layer.getBounds().pad(0.18));
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Day 2 · 老城民国 + 秦淮</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<style>
+  html,body,#map{height:100%;margin:0;background:#f8fafc}
+  .leaflet-container{font:14px/1.45 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}
+</style>
+</head>
+<body>
+<div id="map" role="img" aria-label="Day 2 · 老城民国 + 秦淮"></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const data = {"title": "Day 2 · 老城民国 + 秦淮", "points": [{"name": "总统府", "lat": 32.0455, "lon": 118.7925}, {"name": "南京博物院", "lat": 32.0435, "lon": 118.8205}, {"name": "老门东", "lat": 32.0165, "lon": 118.7835}, {"name": "夫子庙·秦淮河", "lat": 32.0205, "lon": 118.7885}], "routes": [{"from": [32.0455, 118.7925], "to": [32.0435, 118.8205], "label": "地铁 2 号线"}, {"from": [32.0435, 118.8205], "to": [32.0165, 118.7835], "label": "地铁 2→3 号线"}, {"from": [32.0165, 118.7835], "to": [32.0205, 118.7885], "label": "步行 12 分"}]};
+const map = L.map("map", {scrollWheelZoom: true});
+const TILES = [
+  {
+    url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}",
+    options: {
+      maxZoom: 19,
+      attribution: "Tiles &copy; Esri"
+    }
+  },
+  {
+    url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}",
+    options: {
+      maxZoom: 19,
+      attribution: "Tiles &copy; Esri"
+    }
+  }
+];
+let tileIdx = 0;
+let switched = false;
+let tiles = L.tileLayer(TILES[0].url, TILES[0].options).addTo(map);
+tiles.on("tileerror", function () {
+  if (switched || tileIdx >= TILES.length - 1) return;
+  switched = true;
+  tileIdx += 1;
+  map.removeLayer(tiles);
+  tiles = L.tileLayer(TILES[tileIdx].url, TILES[tileIdx].options).addTo(map);
+});
+const layer = L.featureGroup();
+data.points.forEach((p, i) => {
+  const label = p.name ? (i + 1) + ". " + p.name : String(i + 1);
+  L.marker([p.lat, p.lon]).bindPopup(label).addTo(layer);
+});
+(data.routes || []).forEach((r) => {
+  if (!r.from || !r.to) return;
+  L.polyline([r.from, r.to], {color: "#dc2626", weight: 3, opacity: 0.75, dashArray: "6 6"}).addTo(layer);
+});
+layer.addTo(map);
+if (data.points.length === 1) {
+  map.setView([data.points[0].lat, data.points[0].lon], 14);
+} else {
+  map.fitBounds(layer.getBounds().pad(0.18));
+}
+</script>
+</body>
+</html>
