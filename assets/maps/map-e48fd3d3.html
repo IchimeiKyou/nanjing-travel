@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Day 3 · 城墙湖山 → 南京博物院</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<style>
+  html,body,#map{height:100%;margin:0;background:#f8fafc}
+  .leaflet-container{font:14px/1.45 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}
+</style>
+</head>
+<body>
+<div id="map" role="img" aria-label="Day 3 · 城墙湖山 → 南京博物院"></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const data = {"title": "Day 3 · 城墙湖山 → 南京博物院", "points": [{"name": "地铁 3/4 号线 鸡鸣寺站", "lat": 32.0607, "lon": 118.7952}, {"name": "台城城墙（解放门登城）", "lat": 32.0629, "lon": 118.7947}, {"name": "鸡鸣寺", "lat": 32.0603, "lon": 118.7931}, {"name": "南京博物院（明故宫）", "lat": 32.0428, "lon": 118.8199}], "routes": [{"from": [32.0607, 118.7952], "label": "步行 5 分钟", "to": [32.0629, 118.7947]}, {"from": [32.0629, 118.7947], "label": "下城墙", "to": [32.0603, 118.7931]}, {"from": [32.0603, 118.7931], "label": "地铁 2 号线一站", "to": [32.0428, 118.8199]}]};
+const map = L.map("map", {scrollWheelZoom: true});
+// Street tiles: Esri (no key). OSMF and Carto basemaps reject or watermark app use.
+const TILES = [
+  {
+    url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}",
+    options: {
+      maxZoom: 19,
+      attribution: "Tiles &copy; Esri"
+    }
+  },
+  {
+    url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}",
+    options: {
+      maxZoom: 19,
+      attribution: "Tiles &copy; Esri"
+    }
+  }
+];
+let tileIdx = 0;
+let switched = false;
+let tiles = L.tileLayer(TILES[0].url, TILES[0].options).addTo(map);
+tiles.on("tileerror", function () {
+  if (switched || tileIdx >= TILES.length - 1) return;
+  switched = true;
+  tileIdx += 1;
+  map.removeLayer(tiles);
+  tiles = L.tileLayer(TILES[tileIdx].url, TILES[tileIdx].options).addTo(map);
+});
+const layer = L.featureGroup();
+data.points.forEach((p, i) => {
+  const label = p.name ? (i + 1) + ". " + p.name : String(i + 1);
+  L.marker([p.lat, p.lon]).bindPopup(label).addTo(layer);
+});
+(data.routes || []).forEach((r) => {
+  if (!r.from || !r.to) return;
+  L.polyline([r.from, r.to], {color: "#dc2626", weight: 3, opacity: 0.75, dashArray: "6 6"}).addTo(layer);
+});
+layer.addTo(map);
+if (data.points.length === 1) {
+  map.setView([data.points[0].lat, data.points[0].lon], 14);
+} else {
+  map.fitBounds(layer.getBounds().pad(0.18));
+}
+</script>
+</body>
+</html>

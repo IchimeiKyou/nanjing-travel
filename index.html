@@ -77,10 +77,40 @@ section{padding:64px 0}
 .tl-body p+p{margin-top:9px}
 .tl-tip{margin-top:14px!important;font-size:13.5px!important;background:#fbf8f1;border-left:3px solid var(--gold-l);padding:11px 15px;border-radius:0 4px 4px 0;color:var(--ink2)!important;line-height:1.75}
 .tl-tip b{color:var(--red)}
+/* 游览策略：编号动线清单，仅老门东 / 夫子庙两张卡使用 */
+.route-list{margin-top:10px;padding-left:0;list-style:none;counter-reset:rt}
+.route-list li{font-size:14px;color:var(--ink2);line-height:1.8;padding:8px 12px 8px 14px;margin-top:6px;background:#fafbf9;border-left:2px solid var(--teal);border-radius:0 4px 4px 0}
+.route-list li b{color:var(--ink)}
 /* 景点「是什么」定位框：与正文合并为介绍首段，不再单独重复一句话简介 */
+.tl-sub{font-size:12.5px!important;color:var(--ink3)!important;line-height:1.6;margin-top:6px!important;letter-spacing:.01em}
+.tl-sub+*{margin-top:10px!important}
 .tl-what{font-size:14px!important;color:var(--ink)!important;line-height:1.85;margin-top:12px!important;background:#f4f6f4;border-left:3px solid var(--teal);padding:12px 16px;border-radius:0 5px 5px 0}
 .tl-what b{color:var(--teal);font-weight:700}
 .tl-what em{font-style:normal;color:var(--ink3);font-size:13px}
+
+/* ---------- 返程倒排卡片 ---------- */
+.depart-card{margin:0 0 26px;background:#fdf7f6;border:1px solid #eccfce;border-left:4px solid var(--red);border-radius:10px;padding:24px 26px 22px}
+.depart-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+.depart-head h3{font-size:19px;font-weight:800;color:var(--ink);letter-spacing:.01em}
+.depart-badge{font-size:11px;font-weight:700;letter-spacing:.08em;color:#fff;background:var(--red);border-radius:3px;padding:3px 9px}
+.depart-lead{font-size:14px;color:var(--ink2);line-height:1.75;margin-bottom:18px}
+.depart-steps{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 18px;padding:0;counter-reset:none}
+.depart-steps li{background:#fff;border:1px solid #ead9d8;border-radius:8px;padding:14px 14px 13px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.depart-steps li.is-key{background:#fff;border-color:var(--red);box-shadow:0 0 0 1px rgba(166,59,50,.18)}
+.ds-time{font-variant-numeric:tabular-nums;font-size:22px;font-weight:800;color:var(--red);line-height:1.1;letter-spacing:.01em}
+.ds-text{font-size:13.5px;color:var(--ink);line-height:1.5}
+.ds-text b{display:block;font-weight:700}
+.ds-text small{display:block;font-size:11.5px;color:var(--ink3);margin-top:3px;line-height:1.45}
+.depart-note{border-top:1px dashed #e3c9c8;padding-top:14px}
+.depart-note p{font-size:13.5px;color:var(--ink2);line-height:1.8}
+.depart-note p+p{margin-top:8px}
+.depart-note b{color:var(--red)}
+.depart-meta{font-size:12.5px!important;color:var(--ink3)!important}
+@media(max-width:720px){
+  .depart-card{padding:20px 18px 18px}
+  .depart-steps{grid-template-columns:repeat(2,1fr)}
+  .ds-time{font-size:19px}
+}
 
 /* ---------- CARD GRID ---------- */
 .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
@@ -143,6 +173,11 @@ figcaption b{color:var(--ink);font-weight:700}
 .map-legend span{display:inline-flex;align-items:center;gap:6px}
 .map-legend i{width:9px;height:9px;border-radius:50%;display:inline-block}
 .map-day{margin-bottom:26px}
+.map-figure{margin:0}
+.map-figure img{display:block;width:100%;height:auto;border-radius:10px;border:1px solid var(--line);background:#eef1f5}
+.map-figure figcaption{display:flex;flex-wrap:wrap;gap:4px 10px;margin-top:10px;font-size:12.5px;color:var(--ink2);line-height:1.7}
+.map-figure .cap-t{font-weight:700;color:var(--ink)}
+.map-figure .cap-c{color:var(--ink3)}
 @media(max-width:640px){
   .map-frame iframe{height:300px}
   .map-block{padding:16px}
@@ -158,6 +193,15 @@ figcaption b{color:var(--ink);font-weight:700}
 /* ---------- GALLERY（组图） ---------- */
 .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:34px}
 .gallery figure{margin:0}
+.gallery figure img{height:220px}
+figcaption .cap-t{display:block;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px}
+figcaption .cap-c{display:block;font-size:12px;color:var(--ink3);line-height:1.55}
+figcaption .cap-c b{color:var(--red);font-weight:700}
+/* 图组小标题 */
+.gallery-head{grid-column:1/-1;display:flex;align-items:baseline;gap:10px;margin:6px 0 -4px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.gallery-head h4{font-size:15px;font-weight:800;color:var(--ink);letter-spacing:.01em}
+.gallery-head span{font-size:11.5px;color:var(--ink3);letter-spacing:.08em}
+.gallery-head .gh-tag{font-size:10.5px;font-weight:700;color:var(--teal);background:#e6f0ef;border-radius:20px;padding:2px 9px;letter-spacing:.04em}
 
 /* ---------- BOOKING TABLE（预约清单） ---------- */
 .table-wrap{overflow-x:auto;border-radius:10px;box-shadow:var(--sh);background:#fff}
@@ -270,12 +314,12 @@ footer p+p{margin-top:6px;font-size:12.5px}
   <div class="hero-in wrap">
     <span class="kicker">NANJING · 3 DAYS · CLASSIC + MUSEUM</span>
     <h1>南京三日 · <em>经典景点</em> 为主，博物馆为骨</h1>
-    <p>第一次来南京的标准走法：Day1 钟山看山水陵寝，Day2 总统府 + 南博 + 秦淮看历史烟火，Day3 城墙玄武湖收尾。不排任何纪念馆；画舫不坐，改为步行夜游。</p>
+    <p>Day1 上午 10:21 抵南京南，轻装直接地铁到长江路 → <strong>六朝博物馆 → 周家二小姐的菜（1912 街区店）午饭 → 总统府</strong> → 傍晚城南秦淮；Day2 全天钟山（明孝陵上午、中山陵下午）；Day3 是 <strong>11/20 返程日</strong>：上午先看南京博物院，午后走颐和路 → 鸡鸣寺 → 解放门 → 玄武门，<strong>16:30 前必须收工</strong>赶 18:47 南京南的高铁。共 13 处景点；秦淮画舫列为候选项，到现场看排队与体力再定。</p>
     <div class="hero-meta">
       <div><span>行程天数</span><strong>3 天</strong></div>
-      <div><span>必去景点</span><strong>12 处</strong></div>
+      <div><span>必去景点</span><strong>13 处</strong></div>
       <div><span>需预约</span><strong>3 处必抢</strong></div>
-      <div><span>人均门票</span><strong>约 245 元</strong></div>
+      <div><span>人均门票</span><strong>约 235 元</strong></div>
     </div>
   </div>
 </header>
@@ -283,9 +327,9 @@ footer p+p{margin-top:6px;font-size:12.5px}
 <nav class="nav">
   <div class="wrap">
     <a href="#overview">总览</a>
-    <a href="#day1">Day 1 · 钟山</a>
-    <a href="#day2">Day 2 · 老城秦淮</a>
-    <a href="#day3">Day 3 · 城墙玄武湖</a>
+    <a href="#day1">Day 1 · 总统府秦淮</a>
+    <a href="#day2">Day 2 · 钟山</a>
+    <a href="#day3">Day 3 · 南博 + 城北城墙</a>
     <a href="#booking">预约清单</a>
     <a href="#options">全部备选项</a>
     <a href="#stay">住宿美食</a>
@@ -304,67 +348,68 @@ footer p+p{margin-top:6px;font-size:12.5px}
       <article class="day-card">
         <div class="dc-top">
           <div class="dc-num">01</div>
+          <div class="dc-theme">中午抵宁 · 民国 + 秦淮</div>
+        </div>
+        <h3>六朝博物馆 → 周家二小姐午饭 → 总统府 → 老门东 → 夫子庙秦淮</h3>
+        <p>10:21 到南京南，<strong>轻装直接地铁到长江路（约 30 分钟）</strong>，11:00 先进六朝博物馆（1 小时，现场买票），出来去 1912 街区的<strong>周家二小姐的菜</strong>吃午饭，13:00 进总统府（含煦园，2.5 小时）——小的在前、大的在后，两个 17:00 的截止时间都不慌。15:30 出总统府<strong>直接地铁去老门东，留足 2.5 小时</strong>（主巷 + 骏惠书屋 + 城墙，边逛边吃晚饭），18:30 再步行 15 分钟到夫子庙看灯影，画舫看排队再定。</p>
+        <div class="dc-tags">
+          <span class="tag tag-red">六朝博物馆</span>
+          <span class="tag tag-red">总统府</span>
+          <span class="tag">老门东</span>
+          <span class="tag">夫子庙</span>
+        </div>
+        <div class="dc-foot">门票合计 <strong>95 元</strong> · 步行约 8 km · 全天</div>
+      </article>
+      <article class="day-card">
+        <div class="dc-top">
+          <div class="dc-num">02</div>
           <div class="dc-theme">钟山风景区 · 体力日</div>
         </div>
-        <h3>中山陵 → 音乐台 → 明孝陵 → 美龄宫</h3>
-        <p>全天在山里，紫金山南麓一条线走完。392 级台阶 + 石象路神道，是南京最经典的一天。</p>
+        <h3>明孝陵 → 中山陵 → 音乐台 → 美龄宫</h3>
+        <p>全天在山里。上午走石象路神道，下午登 392 级台阶上中山陵，顺路音乐台，最后美龄宫收尾。</p>
         <div class="dc-tags">
           <span class="tag tag-red">中山陵</span>
           <span class="tag">明孝陵</span>
           <span class="tag">美龄宫</span>
           <span class="tag">音乐台</span>
         </div>
-        <div class="dc-foot">门票合计 <strong>110 元</strong> · 步行约 8 km</div>
-      </article>
-      <article class="day-card">
-        <div class="dc-top">
-          <div class="dc-num">02</div>
-          <div class="dc-theme">老城民国 · 历史主线</div>
-        </div>
-        <h3>总统府 → 南博 → 老门东 → 夫子庙秦淮</h3>
-        <p>上午民国史，下午六朝到民国的通史，晚上秦淮灯影。这一天信息量最大，也最出片。</p>
-        <div class="dc-tags">
-          <span class="tag tag-red">总统府</span>
-          <span class="tag tag-red">南京博物院</span>
-          <span class="tag">老门东</span>
-          <span class="tag">夫子庙</span>
-        </div>
-        <div class="dc-foot">门票合计 <strong>35 元</strong> · 步行约 6 km</div>
+        <div class="dc-foot">门票合计 <strong>110 元</strong> · 步行约 8 km · 全天</div>
       </article>
       <article class="day-card">
         <div class="dc-top">
           <div class="dc-num">03</div>
-          <div class="dc-theme">城墙湖山 · 收尾日</div>
+          <div class="dc-theme">返程日 · 18:47 南京南发车</div>
         </div>
-        <h3>台城城墙 → 鸡鸣寺 → 玄武湖 → 颐和路</h3>
-        <p>从明城墙上看湖与寺，下午环湖或钻梧桐老洋房，节奏最松，适合收尾和返程。</p>
+        <h3>南京博物院 → 颐和路 → 鸡鸣寺 → 解放门 → 玄武门</h3>
+        <p>上午先去南博（9:00 开馆，人最少），午后回城西北走民国公馆区，再上鸡鸣寺、从解放门登台城、玄武门下墙。<strong>16:30 前收工</strong>，17:00 前上地铁，17:45 到南京南进站。</p>
         <div class="dc-tags">
-          <span class="tag tag-red">台城城墙</span>
-          <span class="tag">鸡鸣寺</span>
-          <span class="tag">玄武湖</span>
+          <span class="tag tag-red">南京博物院</span>
           <span class="tag">颐和路</span>
+          <span class="tag">鸡鸣寺</span>
+          <span class="tag">台城城墙</span>
+          <span class="tag">玄武门</span>
         </div>
-        <div class="dc-foot">门票合计 <strong>40 元</strong> · 步行约 7 km</div>
+        <div class="dc-foot">门票合计 <strong>40 元</strong> · 步行约 7 km · 08:40–16:30</div>
       </article>
     </div>
 
     <div class="layout-note">
       <div class="ln-icon">◎</div>
       <div>
-        <strong>地理逻辑：</strong>Day1 在城东紫金山，Day2 在城中心（大行宫—新街口—城南），Day3 在城北（玄武湖—鼓楼）。三天动线呈「东 → 中 → 北」，每天不折返，地铁 2 号线是主轴。
+        <strong>地理逻辑：</strong>Day1 中午抵达后只走城中心一条线（大行宫 → 城南秦淮），Day2 全天在城东紫金山，Day3 是返程日：先城东明故宫（南博）→ 城西北颐和路 → 城北鸡鸣寺/台城 → 玄武门 → 南京南。三天动线「中 → 东 → 东 → 西北 → 北 → 南」，Day3 上午有一次东西横穿（明故宫 → 颐和路，地铁约 30 分钟），换来的是一路向北、最后从玄武门直接坐地铁去南京南，返程不折返。
       </div>
     </div>
 
     <div class="map-block">
-      <h3>总览地图 · 本次旅行全部 12 处景点</h3>
-      <p class="map-sub">12 个标记点覆盖三天的全部目的地：东侧紫金山一簇是 Day1，中部偏南是 Day2，北侧玄武湖—鼓楼一带是 Day3。点位为示意位置，实际导航请点开地图交互。</p>
+      <h3>总览地图 · 本次旅行全部 13 处景点</h3>
+      <p class="map-sub">标记点覆盖三天的全部目的地：中部大行宫—城南一带是 Day1（含长江路上的六朝博物馆），东侧紫金山一簇是 Day2，Day3 从城东南的明故宫（南博）斜穿到西北颐和路，再沿城北鸡鸣寺—解放门—玄武门收尾，终点直连南京南站。点位为示意位置，实际导航请点开地图交互。</p>
       <div class="map-frame">
         <iframe src="assets/maps/map-ab753ebd.html" title="南京三日游全部景点总览地图" loading="lazy"></iframe>
       </div>
       <div class="map-legend">
-        <span><i style="background:#e05252"></i>Day 1 · 钟山风景区（4 处）</span>
-        <span><i style="background:#3d7ab8"></i>Day 2 · 老城民国 + 秦淮（4 处）</span>
-        <span><i style="background:#4f9d6b"></i>Day 3 · 城墙湖山（4 处）</span>
+        <span><i style="background:#e05252"></i>Day 1 · 六朝 + 总统府 + 秦淮（5 处）</span>
+        <span><i style="background:#3d7ab8"></i>Day 2 · 钟山风景区（4 处）</span>
+        <span><i style="background:#4f9d6b"></i>Day 3 · 南博 + 城北城墙（5 处）</span>
       </div>
     </div>
   </div>
@@ -373,9 +418,287 @@ footer p+p{margin-top:6px;font-size:12.5px}
 <section id="day1">
   <div class="wrap">
     <div class="sec-head">
-      <div class="num">DAY 01 · 钟山风景区</div>
-      <h2>中山陵 · 明孝陵 · 美龄宫</h2>
-      <p>紫金山南麓，地铁 2 号线「苜蓿园」站进山。景区极大，<strong>务必买观光车票</strong>，别全程走路。</p>
+      <div class="num">DAY 01 · 上午抵宁 · 民国 + 秦淮</div>
+      <h2>六朝博物馆 · 总统府 · 老门东 · 夫子庙</h2>
+      <p>10:21 到南京南，<strong>轻装直接地铁到长江路</strong>（约 30 分钟），11:00 先看六朝博物馆，出来去 1912 街区吃<strong>周家二小姐的菜</strong>，13:00 再进总统府（含西侧煦园），傍晚转场城南秦淮。六朝现场买票不用抢、1 小时可看完；总统府需提前 2 天 0:00 抢票，务必先约上。</p>
+    </div>
+
+    <div class="day-hero">
+      <img src="assets/images/The-President-s-Palace-in-Nanjin-b279a58ccdd8.webp" alt="南京总统府门楼">
+      <div class="day-hero-cap">
+        <span>总统府 · 门楼</span>
+        <p>中国近代建筑遗存中规模最大的一组，从两江总督署到太平天国天王府，再到民国总统府，600 年官署史叠在同一片院子里。</p>
+      </div>
+    </div>
+
+    <div class="map-block map-day">
+      <h3>Day 1 路线图 · 大行宫 → 城南秦淮</h3>
+      <p class="map-sub">抵达南京南后直接地铁到六朝博物馆（1 号线转 3 号线，约 30 分钟，不用先绕去酒店），看完往西走到 1912 街区吃<strong>周家二小姐的菜</strong>，13:00 进总统府。傍晚地铁 3 号线「大行宫」→「武定门」到老门东，吃完步行 15 分钟到夫子庙看夜秦淮。全程地铁 + 步行，不折返。</p>
+      <div class="map-frame">
+        <iframe src="assets/maps/map-32cdde5c.html" title="Day 1 总统府与秦淮路线地图" loading="lazy"></iframe>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">10:21<small>至 11:00</small></div>
+        <div class="tl-body">
+          <h4>抵达南京南 · 直接地铁到长江路 <span class="tl-tag">约 40 分钟</span></h4>
+          <p>10:21 到南京南站，<strong>不出站直接下地铁</strong>：1 号线转 3 号线（或 1 号线转 2 号线），约 30 分钟到「大行宫」站，5 号口出站就是长江路，步行 3 分钟到六朝博物馆。轻装出行的话这一趟最顺，不用先绕去酒店。</p>
+          <p class="tl-tip"><strong>行李怎么办</strong>：本行程按「不带大件」设计——若确有大箱子，用南京南站地铁层的自助寄存柜或站内寄存点存一天（十几元），回程再取；也可以先到酒店放行李，代价是这一段多花 40 分钟，六朝顺延到 11:40 进馆、午饭推到 12:40（周家二小姐取号要更赶），总统府 13:30 进——后面全部压缩，不推荐。住宿建议选<strong>新街口或大行宫</strong>：1/2/3 号线枢纽，三天通勤都最省。</p>
+        </div>
+      </div>
+      <div class="tl-item hl">
+        <div class="tl-time">11:00<small>至 12:00</small></div>
+        <div class="tl-body">
+          <h4>六朝博物馆 <span class="tl-tag">1 小时</span> <span class="tl-tag tag-blue">现场买票</span></h4>
+          <p class="tl-sub">长江路 302 号 · 总统府东侧步行 3 分钟 · 贝建中团队设计</p>
+          <p class="tl-what">南京的<b>六朝专题馆</b>（东吴、东晋、宋、齐、梁、陈），也是全城唯一把「六朝」当成主角讲的博物馆。建筑本身就是展品：贝建中团队（贝聿铭事务所）设计，用竹影、天光与半透的帘幕把展厅切成流动的空间，负一层的遗址展示区和顶层的「六朝风采」是两处高光。</p>
+          <p>镇馆三件值得专门找：<b>青瓷莲花尊</b>（南朝青瓷的巅峰，器身贴塑莲瓣，全国同类中最完整的一件）、<b>釉下彩羽人纹盘口壶</b>（把中国釉下彩绘的起点往前推了几百年）、<b>人面纹瓦当</b>（六朝建康城出土，表情生动，几乎是南京的城市符号）。</p>
+          <p><strong>先知道它的短板</strong>：常设展品约 1200 余件、展陈面积 4000 多㎡，体量明显小于南博，<strong>1 小时够看完</strong>。喜欢建筑、光影、拍照的人满意度很高；冲着「看大量文物」去的人容易失望——所以它适合放在总统府之前当开胃菜，不适合当主菜。</p>
+          <p class="tl-tip">门票 30 元，<strong>现场买票即可，不用抢</strong>；开放 9:00–17:30（<strong>17:00 停止入馆</strong>），周一闭馆（11/18 是周二，正常开放）。<b>为什么排在最前面</b>：一是 10:21 到南京南、轻装直接地铁过来正好 11:00 进馆，把上午的碎片时间用掉；二是六朝只要 1 小时、总统府要 2.5 小时，先看完小的，把午后整块时间留给大的；三是六朝可随时舍弃、总统府是抢来的票不能冒险。11:00 进馆还有个好处：旅行团大多 13:00 后才到，上午的展厅和竹影天光几乎是空的。</p>
+          <p class="tl-tip"><b>游览策略</b>：<strong>先下负一层看建康城遗址，再上二层「六朝风采」，最后顶层建筑光影</strong>——1 小时刚好，不赶。负一层的夯土城墙遗迹是全馆唯一「原址原物」，<strong>很多人直接从一层开始看，把它漏掉了</strong>；顶层的贝氏建筑光影本身就是展品，出门前再拍。周一闭馆，11 月 18 日是周二，正常开放。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">12:00<small>至 13:00</small></div>
+        <div class="tl-body">
+          <h4>午餐 · 周家二小姐的菜（南京 1912 街区店） <span class="tl-tag">1 小时</span> <span class="tl-tag tag-red">饭点排队</span></h4>
+          <p class="tl-sub">玄武区长江路 · 南京 1912 街区（总统府西侧）· 镇江来的江浙私房菜 · 人均约 100–130 元</p>
+          <p class="tl-what">镇江起家的<b>江浙私房菜</b>（西津渡、南长街、八佰伴、江都金鹰都有店，南京这家是首店），主打<b>活蟹现炒</b>与江南家常硬菜。店面开在 1912 街区的民国老建筑里，青砖灰瓦、木窗临街，坐下来就是一桌江南宅子的氛围——<strong>正好接住你刚看完的总统府民国片区</strong>，不用为吃饭再折返。</p>
+          <p><b>必点四样</b>：<b>二小姐爱吃的香炒蟹</b>（每桌必点，蟹黄厚、底下垫的年糕吸满汤汁，很多人说年糕比蟹还好吃；<strong>每日限量，晚到会售罄</strong>）、<b>私房脆姜红烧肉</b>（浓油赤酱里加脆姜解腻）、<b>秘制糟花螺</b>（花螺去尾洗净塞回壳、糟卤泡 24 小时，招牌冷菜）、<b>香葱猪油酥饼</b>（现烤，垫肚子最快）。两个人点 3–4 个菜就够，蟹 + 一个热菜 + 一个凉菜 + 酥饼。</p>
+          <p class="tl-tip"><b>时间怎么卡</b>：12:00 从六朝出来，沿长江路往西走 8–10 分钟到 1912（或直接打车 3 分钟）。<strong>进店先取号再看菜单</strong>——这家饭点排队是常态，镇江本店等一小时都算正常。目标是 <strong>12:15 前坐下、12:55 买单</strong>，13:00 进总统府；<strong>12:30 还没叫到号就果断换店</strong>（1912 街区里同类餐馆密集，隔壁随便一家都能 40 分钟吃完），别把总统府 2.5 小时的余量耗在等位上。</p>
+          <p class="tl-tip"><b>更稳的做法</b>：出发前 1 天在大众点评/美团上留意这家是否支持线上排号或订座，能订就直接订 12:15 的位；不能订就 11:55 从六朝提前 5 分钟出来先取号。吃完从 1912 往东走 5 分钟就是总统府门楼，不用坐车。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:00<small>至 15:30</small></div>
+        <div class="tl-body">
+          <h4>总统府 <span class="tl-tag">2.5 小时</span> <span class="tl-tag tag-red">需预约</span></h4>
+          <p class="tl-sub">中国近代建筑遗存中规模最大的一组 · 遗址型博物馆</p>
+          <p class="tl-what">中国近代史最重要的<b>遗址型博物馆</b>。同一片院子，从明初汉王府、清代<b>两江总督署</b>、太平天国<b>天王府</b>，一路叠到<b>中华民国总统府</b>，六百年的官署史压在同一块地基上。林则徐、曾国藩、李鸿章、左宗棠、张之洞都曾以两江总督身份在此办公，1912 年孙中山在这里就任临时大总统。</p>
+          <p><b>游览策略</b>：<strong>门楼 → 大堂 → 二堂 → 子超楼（总统办公室）→ 近代史陈列 → 煦园</strong>，<strong>单向一路走到底，不要中途折回西花园</strong>。门楼是 1929 年建成的西式建筑，也是南京最著名的历史照片背景之一。子超楼里的总统办公室、国务会议厅为原状陈列，桌椅、台灯、日历都按 1948 年前后的样子摆放，是全馆信息密度最高的部分，<strong>别在中轴前后反复进出，把时间留给这里</strong>。煦园放在最后——出园即门，不用再穿回主馆。</p>
+          <p>最后不要错过西侧的<b>煦园</b>：明代汉王府的花园，南京现存最完整的江南园林之一。石舫（不系舟）、忘飞阁、桐音馆都临水而建，是整个总统府里最安静、也最出片的角落，多数游客看完主楼就走。</p>
+          <p class="tl-tip">门票 35 元，<strong>提前 2 天 0:00 放票</strong>（「南京总统府」公众号）；周一闭馆；开放 8:30–18:00（17:00 停止入场）。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">15:30<small>至 16:00</small></div>
+        <div class="tl-body">
+          <h4>地铁 3 号线「大行宫」→「武定门」 <span class="tl-tag">2 站</span></h4>
+          <p>总统府出来直接走：大行宫站上 3 号线，2 站到「武定门」。<strong>从 2 号口出站，找公交站坐 46 路或 14 路，一站到「箍桶巷」</strong>，下车就是老门东牌坊（约 5 分钟；不想等车步行也就 10 分钟）。<strong>不再安排长江路填充段</strong>——把这一小时整块挪给老门东一线。</p>
+          <p class="tl-tip">若总统府看得快、15:00 就出来了，就提前下地铁，老门东多逛半小时；若想把江宁织造也补上，那 Day1 会挤到秦淮段，不建议。</p>
+        </div>
+      </div>
+      <div class="tl-item hl">
+        <div class="tl-time">16:00<small>至 18:20</small></div>
+        <div class="tl-body">
+          <h4>老门东 → 城墙博物馆 → 中华门 <span class="tl-tag">2 小时 20 分</span> <span class="tl-tag tag-blue">Day1 重点</span></h4>
+          <p class="tl-sub">历史街区型商业文化区 · 城南民居 · 免费</p>
+          <p class="tl-what"><b>历史街区型商业文化区</b>，位于中华门城堡以东、明城墙脚下。「老门东」这个名字来自它相对「门西」的位置——中华门以东的城南片区，历史上是南京手工业与商贾最密集的地方。街区按修旧如旧的方式重建，马头墙、砖雕门罩、石板路、老井都沿用南京城南民居的做法，不是凭空造的古街。</p>
+          <p>核心看点是<b>骏惠书屋</b>——整体迁建而来的徽派建筑，木雕梁架极为精细，现为书店；<b>芥子园</b>是李渔故居旧址上重建的小园林；沿街的砖雕门楼与老墙门也值得逐个看。傍晚灯笼亮起后，青砖与暖光形成很强的层次感，比白天上镜得多。</p>
+          <p class="tl-tip"><b>本段按你找的「11 站单向动线」重排</b>：武定门地铁站 2 号口 → 公交 46/14 路 → 箍桶巷公交站 → 老门东牌坊 → <b>南京文字墙</b> → 芥子园 → <b>金陵文字墙（德云社）</b> → 先锋书店 → 城墙博物馆 → 中华门 → 公交 2/202 路 → 瞻园西门 → 瞻园 → 古秦淮西牌坊 → 得月台 → 秦淮风光带东北门 → 夫子庙地铁站 2 号口。<strong>全程单向、不回头</strong>，从老门东一路往西北推到夫子庙，最后在地铁口收尾。</p>
+          <p><strong>游览策略：一条主脊 + 两条文字墙支线，顺着走不回头。</strong>老门东的巷子是网格状的，乱走很容易在「三条营—边营—张家衙」之间来回绕，把时间耗在同质的小店上。正确做法是<strong>沿主脊（牌坊 → 箍桶巷）往里推，两个文字墙分别插在牌坊后与德云社旁，再从西端出街区去城墙博物馆与中华门</strong>，这样每个点都只经过一次：</p>
+          <ol class="route-list">
+            <li><b>① 老门东牌坊（入口）</b>——从箍桶巷口的大牌坊进，先在牌坊下拍一张全景，这里是街区唯一能一次框住马头墙群的位置。</li>
+            <li><b>② 南京文字墙 · 秾粹雨花茶（老门东店）</b>——牌坊进来不远，<strong>灰砖墙上满铺黄色立体字</strong>（南京地名、方言词堆成一面墙），是老门东最出片的一面墙。免费、就在店门口，<strong>排队比金陵墙短很多</strong>，先拍这面。<span class="tl-tag tag-blue">免费</span></li>
+            <li><b>③ 芥子园文化展馆</b>——李渔故居旧址上重建的小园林，「芥子」即「小到能装进一粒芥子」。一进院子的尺度，<strong>亭、池、太湖石、曲廊</strong>一圈 15 分钟走完，是街区里唯一有「园林」层次的地方。<span class="tl-tag">门票 15 元</span></li>
+            <li><b>④ 德云社（老门东店）+ 金陵文字墙</b>——深色木门上方金色「德云社」匾额，两侧刻对联。<strong>旁边的金陵文字墙是本线排队最狠的一处</strong>：很多人自带小板凳排，节假日 40 分钟起步。<strong>策略：先看队伍长度再决定</strong>——人多就只在外围侧拍（斜 45° 也能拍到「金陵」两个大字），把时间省给后面的中华门与瞻园。<span class="tl-tag tag-blue">免费</span></li>
+            <li><b>⑤ 先锋书店（老门东店 / 骏惠书屋）</b>——整体迁建而来的徽派建筑，<strong>木雕梁架与藻井</strong>是全场工艺最精的一处。进门先抬头看月梁，再逛书，顺便坐下歇脚。很多人只在门口拍个照就走，里面才是重点。</li>
+            <li><b>⑥ 南京城墙博物馆</b>——街区西端出来往中华门方向走即到。<strong>免费、讲透城砖铭文</strong>（每块砖上都烧着烧制府县与工匠名，是明代的质量追溯制度），1 小时可看完；<strong>须提前 1 天预约</strong>，周一闭馆。<span class="tl-tag tag-blue">免费 · 需预约</span></li>
+            <li><b>⑦ 中华门（瓮城）</b>——世界现存规模最大的城墙瓮城，四道券门层层套叠，藏兵洞可容三千人。<strong>门票 50 元；只在免费区域（瓮城外广场、城墙根部）拍照已经很好看了</strong>，不想花钱就别买票，站在墙下仰拍马道与箭垛，气势足够。<span class="tl-tag">门票 50 元 · 可省</span></li>
+          </ol>
+          <p><strong>接驳：中华门堡垒 → 瞻园</strong>——在中华门外的公交站坐 <b>2 路 / 202 路</b>，到「中华路·瞻园路」站下车，<strong>旁边就是瞻园西门</strong>（车程约 10 分钟，比步行省 20 分钟）。这是全线唯一需要坐车的一段，别硬走。</p>
+          <p><strong>容易错过的三个点</strong>：<b>南京文字墙</b>（在秾粹雨花茶店门口，不抬头看店招会直接走过去）、<b>骏惠书屋的木雕梁架</b>（只在门口拍照等于没进）、<b>芥子园</b>（入口不起眼，容易当成普通院落略过）。<strong>可以放弃的</strong>：与主脊平行的几条小支巷内容高度同质，都是小吃与文创店；金陵文字墙若排队超过 30 分钟，果断放弃侧拍。</p>
+          <p><strong>2 小时 20 分怎么分配</strong>：16:00–16:15 牌坊 + 南京文字墙；16:15–16:35 芥子园（15 元）；16:35–16:55 德云社 + 金陵文字墙（<b>看队伍定，超 30 分钟就侧拍</b>）；16:55–17:15 先锋书店歇脚；17:15–17:45 城墙博物馆（免费，需预约）；17:45–18:10 中华门免费区域拍照；18:10 坐 2/202 路去瞻园。</p>
+          <p>这里游客密度比夫子庙核心区低一档、小吃价格也实在：蒋有记锅贴、小郑酥烧饼、司记豆腐脑、黄勤记凉粉都在步行范围内。<strong>Day1 傍晚把这里当晚饭地点</strong>，边逛边吃，不用专门坐下来。</p>
+          <p class="tl-tip">街区免费，全天开放。<strong>去瞻园留 10 分钟车程</strong>：中华门堡垒外坐 2 路 / 202 路到「中华路·瞻园路」，下车即是瞻园西门，18:20 前后进园正好赶上白天场末段。</p>
+          <div class="map-block">
+            <h3>老门东 · 城南动线手绘图 · 武定门 → 老门东 → 中华门 → 瞻园 → 夫子庙</h3>
+            <p class="map-sub"><strong>这张就是本段动线的原图</strong>——起点在右下角<b>武定门地铁站 2 号口</b>，逆时针串起箍桶巷、南京文字墙、老门东牌坊、芥子园、德云社·金陵文字墙、先锋书店、城墙博物馆、中华门，再沿 2/202 路北上瞻园，最后经古秦淮西牌坊、得月台、秦淮风光带东北门收尾于夫子庙地铁站 2 号口。<b>图源：小红书 @卡比卡比原创</b>，仅作行程核对，请勿搬运。</p>
+            <figure class="map-figure">
+              <img src="assets/images/laomendong-route-map-kabikabi.png" alt="老门东至夫子庙城南动线手绘路线图" loading="lazy">
+              <figcaption><span class="cap-t">推荐路线 · 11 站单向动线</span><span class="cap-c">核对：<b>红色箭头方向即行进方向</b>，全程不回头；两段公交（46/14 路、2/202 路）各一站，其余步行。门票标注：芥子园 15 元、瞻园 30 元，城墙博物馆与两处文字墙免费。</span></figcaption>
+            </figure>
+            <p class="map-sub" style="margin-top:16px">下面是同一动线的<strong>可交互地图版</strong>（点位为示意位置，可缩放拖动，实际导航请点开地图交互）：</p>
+            <div class="map-frame">
+              <iframe src="assets/maps/map-7de9c494.html" title="老门东至夫子庙城南动线地图" loading="lazy"></iframe>
+            </div>
+            <div class="map-legend">
+              <span><i style="background:#e05252"></i>老门东街区（牌坊 → 城墙博物馆，步行）</span>
+              <span><i style="background:#3d7ab8"></i>中华门 → 瞻园（2/202 路 1 站）</span>
+              <span><i style="background:#4f9d6b"></i>瞻园 → 夫子庙东北门（步行收尾）</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item hl">
+        <div class="tl-time">18:20<small>至 19:10</small></div>
+        <div class="tl-body">
+          <h4>瞻园 <span class="tl-tag">50 分钟</span> <span class="tl-tag tag-blue">江南园林 · 收费</span></h4>
+          <p class="tl-sub">南京现存最久的明代古典园林 · 太平天国历史博物馆 · 30 元</p>
+          <p class="tl-what"><b>南京现存历史最久的明代古典园林</b>，与芥子园并称「一官一私」的两座江南园林。明初为徐达府邸西圃，清代为江宁布政使司署，太平天国时期是东王府，园内同时挂着<b>太平天国历史博物馆</b>的牌子。以湖石、水池、曲廊取胜，<b>「瞻园觅秀」</b>是金陵四十八景之一，也是 87 版《红楼梦》的取景地。</p>
+          <p><strong>为什么放在这个位置</strong>：从中华门坐 2 路 / 202 路到「中华路·瞻园路」，<b>下车旁边就是瞻园西门</b>，从西门进、东门出，出来正好接古秦淮西牌坊——这是全线唯一「公交下车即入口」的一段，不用绕。</p>
+          <p><strong>50 分钟怎么走</strong>：西门进 → 静妙堂前的水池与北假山（园子最经典的一帧，亭子倒映在水里）→ 沿曲廊绕到东侧看太湖石群 → 东门出。<b>白天场约 17:30 停止入场、17:00 前后开始清场</b>，若 18:20 到已经关门，就只在西门外的瞻园路牌坊处拍一张外景，把时间挪给秦淮河——<strong>别为了进园把夫子庙夜景挤掉</strong>。</p>
+          <p class="tl-tip"><b>取舍提醒</b>：芥子园（15 元）与瞻园（30 元）都是江南园林，一天看两个容易审美疲劳。<b>时间紧就只进瞻园</b>（规模大、有博物馆加成）；<b>想省钱就只进芥子园</b>（15 元、在老门东动线上不额外绕路）。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">19:10<small>至 21:00</small></div>
+        <div class="tl-body">
+          <h4>夫子庙 · 西牌坊 → 得月台 → 东北门 <span class="tl-tag">约 2 小时</span> <span class="tl-tag tag-blue">画舫可选</span></h4>
+          <p class="tl-sub">孔庙与秦淮河风光带 · 开放式街区 · 免费（画舫另计）</p>
+          <p class="tl-what">以<b>孔庙与秦淮河风光带</b>为核心的开放式景区。夫子庙即南京文庙，始建于宋代，是明清江南科举文化的中心；庙前的秦淮河两岸则是自六朝延续至今的传统商市与灯船夜游区。这一带的价值不在某一栋建筑，而在「庙、市、河」三者叠在一起的市井格局。</p>
+          <p><strong>游览策略：从西牌坊进、东北门出，斜穿泮池不回头。</strong>瞻园东门出来往东北走几分钟就是<b>古秦淮西牌坊</b>，从这里进场，沿河往东一路走到<b>秦淮风光带东北门</b>，出门步行 5 分钟就是<b>夫子庙地铁站 2 号口</b>——全程一条斜线，最后在地铁口收尾，不用原路折返：</p>
+          <ol class="route-list">
+            <li><b>⑨ 古秦淮西牌坊（进场）</b>——夫子庙的西入口，牌坊上「古秦淮」三字是这一带的正式门面。<b>从这里进场的好处是人流比东牌坊少</b>，先拍一张牌坊 + 河面的开场构图。</li>
+            <li><b>⑩ 心情杂货铺音乐酒吧（得月台店）</b>——沿河往东，二楼带<b>临河露台</b>，正对泮池与画舫航道，是全场最好的俯拍机位。<b>关于收费说法不一</b>：有人说是消费入座、有人说是免费上楼，<b>实际看门口有没有人拦——没人就直接上去</b>，有人拦就点一杯最便宜的饮料换机位，值。</li>
+            <li><b>顺路串：文德桥 + 天下文枢牌坊 + 大照壁</b>——得月台下来就在这一片。<b>文德桥中段、镜头朝北</b>是南京最经典的一张照片：桥身正对泮池，灯影落在水面；过桥即天下文枢牌坊，<b>从桥上拍牌坊</b>比站在牌坊下拍好看得多。</li>
+            <li><b>⑪ 秦淮风光带东北门（出场）</b>——沿河继续往东北走到风光带东北门，这一段是灯彩最密的水岸，边走边拍。<b>出门右转 5 分钟即夫子庙地铁站 2 号口</b>，21:00 前后收工。</li>
+          </ol>
+          <p><strong>容易错过的点</strong>：<b>得月台的二楼露台</b>（很多人只在河边平视拍，俯拍才是另一个视角）、<b>文德桥的北侧机位</b>（桥两侧都能上，只有北侧能同时框住照壁与画舫）、<b>大照壁</b>（全国最长的照壁，站桥上才看得到全貌）。<strong>可以放弃的</strong>：沿街「秦淮八绝」小吃店与灯彩店内容重复，挑一家即可；<b>江南贡院 / 科举博物馆</b>（另收费、需 1 小时以上）今晚来不及，别中途拐进去打乱动线。</p>
+          <p><strong>2 小时怎么分配</strong>：19:10–19:25 西牌坊进场 + 河岸开场；19:25–19:50 得月台俯拍；19:50–20:20 文德桥 + 天下文枢牌坊 + 大照壁（拍照主场，多留时间）；20:20–21:00 沿河往东北门慢走收尾，出门即地铁。</p>
+          <p class="tl-tip">街区免费，全天开放。<strong>画舫列为候选项</strong>：到现场看排队、天气和体力再定——泮池码头（大成殿正门）与东关头两处都能上船，夜场约 17:30 起，全程 40–60 分钟。若坐船，就把步行线压到「得月台 → 文德桥」两站，上船看灯、下船即走。详见文末 <b>B7 画舫</b>。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery">
+      <div class="gallery-head">
+        <h4>六朝博物馆 · 认这三处</h4>
+        <span class="gh-tag">核对用图</span>
+        <span>贝氏建筑 + 镇馆青瓷</span>
+      </div>
+      <figure>
+        <img src="assets/images/The-Six-Dynasties-Museum-in-Nanj-9fa1c52d8808.webp" alt="六朝博物馆外立面" loading="lazy">
+        <figcaption><span class="cap-t">① 馆体外观 · 长江路 302 号</span><span class="cap-c">核对：<b>浅灰石材 + 大面积玻璃</b>的现代方盒，紧贴总统府东墙，门口看不到传统博物馆的台阶与柱廊。</span></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/在南京六朝博物馆的贝氏建筑内-一位女子的剪影伫立于巨幅落地窗前--b8ba8bfb4f3f.jpg" alt="六朝博物馆贝氏建筑内部落地窗" loading="lazy">
+        <figcaption><span class="cap-t">② 贝氏建筑内景 · 竹影天光</span><span class="cap-c">核对：<b>巨幅落地窗 + 半透帘幕</b>，光被切成条状落在地面。这就是「建筑本身是展品」的那一层，出门前再拍。</span></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/A-spacious-exhibition-hall-with--a8e96d326b1f.jpg" alt="六朝博物馆展厅" loading="lazy">
+        <figcaption><span class="cap-t">③ 展厅 · 「六朝风采」</span><span class="cap-c">核对：展厅是<b>暗环境 + 重点照明</b>，青瓷莲花尊、人面纹瓦当在这一层。负一层另有建康城夯土城墙原址。</span></figcaption>
+      </figure>
+    </div>
+
+    <div class="gallery">
+      <div class="gallery-head">
+        <h4>总统府 · 认门楼与煦园</h4>
+        <span class="gh-tag">核对用图</span>
+        <span>门楼 → 子超楼 → 煦园</span>
+      </div>
+      <figure>
+        <img src="assets/images/The-President-s-Palace-in-Nanjin-b279a58ccdd8.webp" alt="总统府门楼" loading="lazy">
+        <figcaption><span class="cap-t">① 门楼 · 长江路 292 号</span><span class="cap-c">核对：<b>三孔拱门 + 西式立柱 + 旗杆</b>，门楼上「总统府」三个金字。这是全场唯一认门的位置，进去后不再折回。</span></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/The-image-shows-the-grand-entran-0222f2874321.webp" alt="总统府大堂入口" loading="lazy">
+        <figcaption><span class="cap-t">② 大堂 / 中轴线</span><span class="cap-c">核对：进大门后<b>一条中轴直穿到底</b>（大堂 → 二堂 → 子超楼），两侧是厢房与展室。走错方向就会绕进侧院。</span></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/在南京总统府的煦园内-一座精美的传统木结构亭台临水而建-飞檐翘角-0488a853c8e5.jpg" alt="总统府煦园临水亭台" loading="lazy">
+        <figcaption><span class="cap-t">③ 煦园 · 不系舟一带</span><span class="cap-c">核对：<b>池水 + 临水木构亭台 + 石舫</b>，飞檐翘角倒映水面。多数人看完主楼就走，这里最安静，放在最后出园。</span></figcaption>
+      </figure>
+    </div>
+
+    <div class="gallery">
+      <div class="gallery-head">
+        <h4>老门东 · 认牌坊与两个文字墙</h4>
+        <span class="gh-tag">核对用图</span>
+        <span>牌坊 → 南京文字墙 → 金陵文字墙</span>
+      </div>
+      <figure>
+        <img src="assets/images/The南京老门东-street-vendor-is-skillf-6ea1a4cd9251.webp" alt="老门东街巷与摊档" loading="lazy">
+        <figcaption><span class="cap-t">① 街区主街 · 箍桶巷</span><span class="cap-c">核对：<b>青砖马头墙 + 石板路 + 沿街小吃摊</b>。抬头看门楣上的砖雕与门簪，低头只看店招就会全部错过。</span></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/一位女士站在南京老门东的南京文字墙打卡墙前-张开双臂-面带微笑--f9907492ed11.jpg" alt="老门东南京文字墙打卡墙" loading="lazy">
+        <figcaption><span class="cap-t">② 南京文字墙 · 秾粹雨花茶门口</span><span class="cap-c">核对：<b>灰砖墙上满铺黄色立体字</b>（南京地名与方言词堆成一面墙），牌坊进来不远。免费、排队比金陵墙短得多，这面墙先拍。</span></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/南京老门东的德云社门前-深色木门上方悬挂着-德云社-金色牌匾-两-00753126558c.jpg" alt="老门东德云社门头" loading="lazy">
+        <figcaption><span class="cap-t">③ 德云社门头 · 金陵文字墙旁</span><span class="cap-c">核对：<b>深色木门 + 金色「德云社」牌匾 + 两侧对联</b>。金陵文字墙就在旁边，<b>排队极长（很多人自带小板凳）</b>，队伍超过 30 分钟就在侧面拍，别把后面的城墙段挤掉。</span></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/夜幕下-老门东牌坊灯火辉煌-红灯笼高挂-行人穿梭于古色古香的街巷-295639a12241.jpg" alt="老门东牌坊夜景" loading="lazy">
+        <figcaption><span class="cap-t">④ 老门东牌坊 · 入口</span><span class="cap-c">核对：<b>三间四柱大牌坊 + 红灯笼 + 马头墙群</b>。这是街区唯一能一次框住整片屋顶的位置，进场先拍全景。</span></figcaption>
+      </figure>
+    </div>
+
+    <div class="gallery">
+      <div class="gallery-head">
+        <h4>芥子园 · 先锋书店 · 城墙博物馆 · 中华门</h4>
+        <span class="gh-tag">核对用图</span>
+        <span>老门东西端 → 中华门一线</span>
+      </div>
+      <figure>
+        <img src="assets/images/A-tranquil-corner-of-the-Jiezi-G-461824bc955a.jpg" alt="芥子园亭榭水池" loading="lazy">
+        <figcaption><span class="cap-t">① 芥子园 · 李渔故居旧址</span><span class="cap-c">核对：<b>一进小院 + 水池 + 太湖石 + 曲顶亭</b>，尺度很小，绕一圈 10 分钟。门票 15 元，入口不起眼，容易当成普通院落略过。</span></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/Inside-the-historic骏惠书屋-at-Nanji-a74e2521be53.jpg" alt="先锋书店骏惠书屋内部" loading="lazy">
+        <figcaption><span class="cap-t">② 先锋书店（老门东店）· 骏惠书屋</span><span class="cap-c">核对：<b>整体迁建的徽派木构 + 雕花梁架 + 通顶书架</b>。进门先抬头看藻井与月梁，这是全场工艺最精的一处，也是本段唯一能坐下来歇脚的地方。</span></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/The-South-City-Wall-Museum-s-mod-20c7c4448cc1.jpg" alt="南京城墙博物馆现代建筑外观" loading="lazy">
+        <figcaption><span class="cap-t">③ 南京城墙博物馆 · 免费</span><span class="cap-c">核对：<b>紧贴城墙的现代玻璃体量</b>，讲城砖铭文与城墙营造。<b>须提前 1 天预约</b>，17:00 后停止入场，赶不上就跳过，不影响主线。</span></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/The-South-City-Wall-Museum-s中华门--41edace49a02.jpg" alt="中华门瓮城" loading="lazy">
+        <figcaption><span class="cap-t">④ 中华门瓮城</span><span class="cap-c">核对：<b>三重瓮城 + 藏兵洞 + 马道</b>，世界现存规模最大的城墙瓮城。<b>不买 50 元门票，在免费区域拍外观就很好看</b>——本段只在外围收尾，不登城。</span></figcaption>
+      </figure>
+    </div>
+
+    <div class="gallery">
+      <div class="gallery-head">
+        <h4>瞻园 · 认西门与水池</h4>
+        <span class="gh-tag">核对用图</span>
+        <span>西门进 → 静妙堂水池 → 东门出</span>
+      </div>
+      <figure>
+        <img src="assets/images/A-traditional-Chinese-garden-at--4fa08fc42546.jpg" alt="瞻园水池与红亭" loading="lazy">
+        <figcaption><span class="cap-t">① 静妙堂前水池 · 北假山</span><span class="cap-c">核对：<b>红柱两层亭榭 + 倒影水池 + 太湖石驳岸</b>，这是瞻园最经典的一帧，进门先直奔这里。</span></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/In-Nanjing-s-Zhan-Garden-part-of-d7cc37448529.jpg" alt="瞻园水面亭榭与垂柳" loading="lazy">
+        <figcaption><span class="cap-t">② 曲廊绕行 · 东侧太湖石群</span><span class="cap-c">核对：<b>白墙 + 漏窗 + 垂柳 + 石群</b>，沿曲廊绕到东侧即东门方向。园内同时是太平天国历史博物馆，30 元含展。</span></figcaption>
+      </figure>
+    </div>
+
+    <div class="gallery">
+      <div class="gallery-head">
+        <h4>夫子庙 · 认文德桥与照壁</h4>
+        <span class="gh-tag">核对用图</span>
+        <span>西牌坊 → 得月台 → 文德桥 → 照壁</span>
+      </div>
+      <figure>
+        <img src="assets/images/At-night-the-illuminated-buildin-3e2b20e4e5cd.jpg" alt="夫子庙秦淮河夜景与得月台一带" loading="lazy">
+        <figcaption><span class="cap-t">① 得月台 · 临河露台俯拍</span><span class="cap-c">核对：<b>二层露台正对泮池与画舫航道</b>，白墙上有「南京」二字，红灯笼与游船在下方。心情杂货铺音乐酒吧（得月台店）在此，<b>门口没人拦就直接上楼</b>。</span></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/夜幕下-秦淮河畔的夫子庙灯火辉煌-巨大的彩龙灯饰在河岸墙上熠熠生-c5371e660ad6.jpg" alt="夫子庙秦淮河夜景与彩龙灯饰" loading="lazy">
+        <figcaption><span class="cap-t">① 泮池 · 大照壁与彩龙</span><span class="cap-c">核对：<b>河对岸一整面墙 + 巨型彩龙灯饰</b>，这是全国最长的照壁。站在文德桥北侧才看得到全貌。</span></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/Illuminated-dragon-lanterns-and--763e4381612f.jpg" alt="秦淮河画舫与灯彩" loading="lazy">
+        <figcaption><span class="cap-t">② 画舫码头 · 灯船</span><span class="cap-c">核对：<b>河面上成排的仿古游船</b>，泮池码头（大成殿正门）与东关头两处都能上船。坐船就把步行线压到两站。</span></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/Brightly-lit-traditional-pavilio-9bcf6e34d36d.jpg" alt="夫子庙夜间牌坊与楼阁" loading="lazy">
+        <figcaption><span class="cap-t">③ 天下文枢牌坊一带</span><span class="cap-c">核对：<b>牌坊 + 楼阁 + 密集灯带</b>。从文德桥上拍牌坊，比站在牌坊底下拍好看得多。</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+<!-- ============ DAY 2 ============ -->
+<section id="day2">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="num">DAY 02 · 钟山风景区</div>
+      <h2>明孝陵 · 中山陵 · 音乐台 · 美龄宫</h2>
+      <p>紫金山南麓，地铁 2 号线「苜蓿园」站进山。按你的票源，<strong>明孝陵走上午、中山陵走下午</strong>。景区极大，务必买观光车票。</p>
     </div>
 
     <div class="day-hero">
@@ -387,72 +710,76 @@ footer p+p{margin-top:6px;font-size:12.5px}
     </div>
 
     <div class="map-block map-day">
-      <h3>Day 1 路线图 · 钟山风景区</h3>
-      <p class="map-sub">苜蓿园进山后由东向西一条线：中山陵 → 音乐台（步行 10 分）→ 明孝陵（观光车）→ 美龄宫（步行 15 分）。四个点都在紫金山南麓，靠观光车串联，不要靠腿走。</p>
+      <h3>Day 2 路线图 · 钟山风景区</h3>
+      <p class="map-sub">苜蓿园进山后先到明孝陵（石象路神道），午饭后转场中山陵登 392 级台阶，下来顺路音乐台，最后美龄宫收尾。四个点都在紫金山南麓，靠观光车串联，不要靠腿走。</p>
       <div class="map-frame">
-        <iframe src="assets/maps/map-09b73e1d.html" title="Day 1 钟山风景区路线地图" loading="lazy"></iframe>
+        <iframe src="assets/maps/map-ad440966.html" title="Day 2 钟山风景区路线地图" loading="lazy"></iframe>
       </div>
     </div>
 
     <div class="timeline">
       <div class="tl-item">
-        <div class="tl-time">08:30</div>
+        <div class="tl-time">08:30<small>至 09:00</small></div>
         <div class="tl-body">
           <h4>地铁 2 号线「苜蓿园」站 → 景区观光车 <span class="tl-tag">约 30 分钟</span></h4>
           <p>1 号口出站，换乘景区观光车进山。观光车分段计费 15–30 元，可买单程也可买联程。自驾不建议，节假日停车场一位难求。</p>
         </div>
       </div>
       <div class="tl-item">
-        <div class="tl-time">09:00<small>至 11:00</small></div>
+        <div class="tl-time">09:00<small>至 11:30</small></div>
         <div class="tl-body">
-          <h4>中山陵 <span class="tl-tag">2 小时</span></h4>
-          <p class="tl-what">中国近代规模最大、规格最高的<b>纪念性陵墓</b>，孙中山先生的安息之地，也是南京的城市象征。1926 年动工、1931 年建成，吕彦直设计的方案在当年竞选中获首奖，整座陵园依紫金山南麓缓坡铺展，从空中俯瞰是一条完整的「自由钟」轮廓——博爱坊是钟钮，392 级石阶是钟摆，祭堂是钟锤，寓意「唤起民众」。</p>
-          <p>进园从<strong>博爱坊</strong>开始，经墓道、陵门（门额「天下为公」）、碑亭（碑文为谭延闿手书）、392 级花岗岩石阶，直到最高处的祭堂与墓室。台阶刻意做成十段，每段一个平台：从下往上看只见台阶不见平台，从上往下看只见平台不见台阶，是当年设计者的一处巧思。祭堂内是孙中山先生汉白玉坐像，四壁为《建国大纲》全文，堂后墓室为圆形穹顶，中央是卧像与地下墓穴。</p>
-          <p>登顶回望，整片紫金山林海与南京城东的天际线一起铺开，是全程最值得停下来的一个视角。台阶坡度不小，老人和小孩建议走两侧缓坡道；夏天正午石阶暴晒，尽量赶早。中山陵与明孝陵、灵谷寺同属钟山风景区，三者之间靠景区观光车串联。</p>
-          <p class="tl-tip">免费，但<strong>须提前 1–3 天在「中山陵园票务」公众号预约</strong>；周一闭馆；墓室仅周二至周五开放（法定节假日除外）。</p>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-time">11:00<small>至 11:40</small></div>
-        <div class="tl-body">
-          <h4>音乐台 <span class="tl-tag">40 分钟</span></h4>
-          <p class="tl-what">中山陵的配套<b>露天音乐演出场地</b>，1933 年由杨廷宝设计建成，是民国时期首都最重要的公共文化建筑之一。它不是一个「景点」意义上的古迹，而是一座真正被使用过的户外剧场：半圆扇形看台依坡而建，可容三千人；舞台后方的照壁做成回音壁，声音打到弧面上会自然汇聚反射回观众席，当年不用扩音设备也能听清。</p>
-          <p>如今音乐台的功能早已从演出转向休憩与拍照。中心是一片大草坪，常年养着一群白鸽，鸽子不怕人，会在脚边踱步、起飞时整片掠过头顶。半圆弧的看台、背后爬满藤蔓的照壁、草坪与远处的紫金山，构成一个天然取景框，是南京公认最出片的机位之一，婚纱摄影常年在此扎堆。</p>
-          <p>从中山陵祭堂下来顺路即到，步行几分钟。地方不大，40 分钟足够，适合作为登山后的缓冲。想拍空景要赶早或临近闭园；鸽子起飞多在投喂时，现场有小包鸽食出售。</p>
-          <p class="tl-tip">门票 10 元。喂鸽子的小食现场有卖。</p>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-time">12:00<small>至 13:00</small></div>
-        <div class="tl-body">
-          <h4>午餐 · 下马坊 / 景区内 <span class="tl-tag">1 小时</span></h4>
-          <p>景区内餐饮选择少且贵，建议观光车下山到「下马坊」一带吃，或自带简餐在音乐台草坪解决。</p>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-time">13:00<small>至 15:30</small></div>
-        <div class="tl-body">
-          <h4>明孝陵 <span class="tl-tag">2.5 小时</span> <span class="tl-tag tag-red">已确认保留</span></h4>
+          <h4>明孝陵 <span class="tl-tag">2.5 小时</span></h4>
+          <p class="tl-sub">朱元璋与马皇后合葬陵 · 世界文化遗产 · 明清皇家陵寝样板</p>
           <p class="tl-what">明太祖朱元璋与马皇后的合葬陵，<b>世界文化遗产</b>，也是中国明清皇家陵寝制度的开创之作。它定下的「前朝后寝、前方后圆、神道引导」格局，后来被北京十三陵等明清帝陵整体沿用，在中国陵寝史上属于「样板」级别的存在。整个景区是遗址型的帝王陵园，不是博物馆，看的是建筑格局、石刻与山林环境本身。</p>
           <p>核心是<strong>石象路神道</strong>：600 米长的神道并非笔直，而是随梅花山地形折成月牙形，两侧依次排列狮、獬豸、骆驼、象、麒麟、马六种石兽，每种两对（一卧一立），共 12 对 24 件。石兽之后是翁仲路的文臣武将石像。秋天两侧乌桕、枫香、银杏次第变色，红黄交织，被称为「南京最美的 600 米」，每年 11 月中下旬是顶峰。</p>
-          <p>走完神道，经棂星门、金水桥，进入陵宫主体：文武方门、享殿（原建筑已毁，现存为清末重建）、内红门、升仙桥，最后是方城与明楼。方城是一座巨大的城墙式台基，中间的券门可登明楼俯瞰；再往北的宝顶（独龙阜）下即朱元璋与马皇后的合葬地宫，未发掘。整条动线走完约 2.5 小时，坡度平缓，是钟山三处里最省力的一处。</p>
-          <p class="tl-tip">门票 70 元，景区开放 6:30–18:00。从观光车「明孝陵」站下车，建议从大金门进、石象路 → 翁仲路 → 棂星门 → 金水桥 → 方城明楼的顺序走。</p>
+          <p>走完神道，经棂星门、金水桥，进入陵宫主体：文武方门、享殿、内红门、升仙桥，最后是方城与明楼。方城是一座巨大的城墙式台基，中间的券门可登明楼俯瞰；再往北的宝顶（独龙阜）下即朱元璋与马皇后的合葬地宫，未发掘。整条动线走完约 2.5 小时，坡度平缓，是钟山三处里最省力的一处——<strong>放在上午走，体力正好</strong>。</p>
+          <p class="tl-tip"><b>游览策略</b>：从大金门进 → 石象路神道 → 翁仲路 → 棂星门 → 金水桥 → 文武方门 → 享殿 → 方城明楼，<strong>单向一条线走到底，不回头</strong>。石象路 600 米是全场重点，六种石兽每种一对，<strong>别只拍开头那对狮子</strong>，走到骆驼、象、麒麟那几对人才少、背景更干净。方城券门可登明楼俯瞰，是唯一的高点机位，<strong>上去一次就够</strong>；再往北的宝顶（独龙阜）是未发掘地宫，只能远看、不要绕行。整条动线坡度平缓，2.5 小时刚好。</p>
         </div>
       </div>
       <div class="tl-item">
-        <div class="tl-time">15:30<small>至 16:30</small></div>
+        <div class="tl-time">11:30<small>至 12:40</small></div>
+        <div class="tl-body">
+          <h4>午餐 · 下马坊 / 景区内 <span class="tl-tag">1 小时</span></h4>
+          <p>景区内餐饮选择少且贵，建议观光车下山到「下马坊」一带吃，或自带简餐。吃完再坐观光车回中山陵方向。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:00<small>至 15:00</small></div>
+        <div class="tl-body">
+          <h4>中山陵 <span class="tl-tag">2 小时</span> <span class="tl-tag tag-red">需预约 · 下午场</span></h4>
+          <p class="tl-sub">孙中山先生陵寝 · 392 级台阶 · 南京城市象征</p>
+          <p class="tl-what">中国近代规模最大、规格最高的<b>纪念性陵墓</b>，孙中山先生的安息之地，也是南京的城市象征。1926 年动工、1931 年建成，吕彦直设计的方案在当年竞选中获首奖，整座陵园依紫金山南麓缓坡铺展，从空中俯瞰是一条完整的「自由钟」轮廓——博爱坊是钟钮，392 级石阶是钟摆，祭堂是钟锤，寓意「唤起民众」。</p>
+          <p>进园从<strong>博爱坊</strong>开始，经墓道、陵门（门额「天下为公」）、碑亭、392 级花岗岩石阶，直到最高处的祭堂与墓室。台阶刻意做成十段，每段一个平台：从下往上看只见台阶不见平台，从上往下看只见平台不见台阶，是当年设计者的一处巧思。祭堂内是孙中山先生汉白玉坐像，四壁为《建国大纲》全文，堂后墓室为圆形穹顶。</p>
+          <p>下午登顶的好处是<strong>光线从西侧打过来</strong>，祭堂正立面不逆光，回望城东天际线的层次也更好。缺点是下午石阶比上午晒、比上午累，建议走两侧缓坡道，中途在平台多歇两次。</p>
+          <p class="tl-tip"><b>游览策略</b>：博爱坊 → 墓道 → 陵门 → 碑亭 → 392 级台阶 → 祭堂 → 墓室，<strong>一条中轴直上，不用绕</strong>。台阶分十段，<strong>每段平台都是一次歇脚点</strong>，下午日晒强，走两侧缓坡比正中间台阶省力。真正值得慢下来的是最上面两处：<strong>祭堂内的汉白玉坐像与四壁《建国大纲》</strong>、以及回身俯瞰城东天际线的那一眼——很多人爬到顶拍张照就下山，把这两处漏掉了。墓室仅周二至周五开放，11 月 18 日是周二，正常可进。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">15:00<small>至 15:40</small></div>
+        <div class="tl-body">
+          <h4>音乐台 <span class="tl-tag">40 分钟</span></h4>
+          <p class="tl-sub">民国露天音乐演出场地 · 白鸽草坪 · 出片机位</p>
+          <p class="tl-what">中山陵的配套<b>露天音乐演出场地</b>，1933 年由杨廷宝设计建成，是民国时期首都最重要的公共文化建筑之一。它不是一个「景点」意义上的古迹，而是一座真正被使用过的户外剧场：半圆扇形看台依坡而建，可容三千人；舞台后方的照壁做成回音壁，声音打到弧面上会自然汇聚反射回观众席，当年不用扩音设备也能听清。</p>
+          <p>如今功能早已从演出转向休憩与拍照。中心是一片大草坪，常年养着一群白鸽，鸽子不怕人，起飞时整片掠过头顶。半圆弧看台、爬满藤蔓的照壁、草坪与远处的紫金山，构成一个天然取景框，是南京公认最出片的机位之一。</p>
+          <p>就在中山陵祭堂下方，从台阶下来顺路即到，步行几分钟。地方不大，40 分钟足够，正好当登山后的缓冲。</p>
+          <p class="tl-tip">门票 10 元。喂鸽子的小食现场有卖。<b>游览策略</b>：就在祭堂下方，<strong>从中山陵台阶下来顺路即到，不必专门折返</strong>。重点只有三样——半圆看台、爬满藤蔓的照壁、草坪上的白鸽；<strong>等一次鸽子集体起飞</strong>（有人喂食时最容易），比摆拍更出片。40 分钟足够，当作登山后的缓冲。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">15:50<small>至 16:50</small></div>
         <div class="tl-body">
           <h4>美龄宫 <span class="tl-tag">1 小时</span></h4>
+          <p class="tl-sub">国民政府主席官邸 · 梧桐项链 · 民国建筑</p>
           <p class="tl-what">正式名称是「国民政府主席官邸」，因宋美龄常在此居住而俗称<b>美龄宫</b>。1931 年始建、1934 年竣工，三层中西合璧的官邸别墅，绿色琉璃瓦顶配汉白玉栏杆，是民国南京「首都计划」时期最高水准的建筑之一。现在作为旧址纪念馆开放，内部按原状陈列会客厅、卧室、餐厅等生活场景。</p>
-          <p>它最出名的是那个<b>「梧桐项链」</b>构图：环绕小红山的环陵路两侧种满法国梧桐，从空中看是一圈完整的椭圆项链，而美龄宫正好落在项链下端的坠子上，绿色琉璃瓦顶就是那颗宝石。这个视角在 2015 年前后被航拍照片带火，成了南京最具辨识度的城市意象。地面游览看不到这个形状，但站在宫前平台上，能感受到环山梧桐围出的那道弧。</p>
-          <p>建筑本身值得细看：一层是会客与办公空间，二层为起居室与卧室，三层是凯歌堂（小型礼拜堂），地下还有供暖锅炉房——在 1930 年代的中国属于相当超前配置。室内保留了部分原家具与照片，可以直观看到民国上层生活的样子。参观约 1 小时，就在明孝陵东侧，步行或坐一站观光车即可到达。</p>
-          <p class="tl-tip">门票 30 元，开放 7:30–17:30。就在明孝陵景区东侧，步行或坐一站观光车即到。</p>
+          <p>它最出名的是那个<b>「梧桐项链」</b>构图：环绕小红山的环陵路两侧种满法国梧桐，从空中看是一圈完整的椭圆项链，而美龄宫正好落在项链下端的坠子上，绿色琉璃瓦顶就是那颗宝石。地面游览看不到这个形状，但站在宫前平台上，能感受到环山梧桐围出的那道弧。</p>
+          <p>建筑本身值得细看：一层是会客与办公空间，二层为起居室与卧室，三层是凯歌堂（小型礼拜堂），地下还有供暖锅炉房——在 1930 年代的中国属于相当超前配置。</p>
+          <p class="tl-tip">门票 30 元，开放 7:30–17:30。<b>游览策略</b>：在明孝陵东侧，从中山陵过来要<strong>往西回走一段，坐一站观光车最省力，别硬走</strong>。进馆按<strong>一层会客办公 → 二层起居卧室 → 三层凯歌堂</strong>的顺序上楼，最后到宫前平台看环山梧桐围出的那道弧——「梧桐项链」地面看不到全形，<strong>看的是这道弧，不要指望拍到项链</strong>。1 小时够。</p>
         </div>
       </div>
       <div class="tl-item">
         <div class="tl-time">17:00<small>至 18:00</small></div>
         <div class="tl-body">
-          <h4>下山回城 <span class="tl-tag">按默认方案不加灵谷寺</span></h4>
+          <h4>下山回城 <span class="tl-tag">不加灵谷寺</span></h4>
           <p>观光车下山 → 地铁 2 号线回市区。若体力尚余且正值深秋，可加<strong>灵谷寺</strong>（35 元，银杏绝美）——见文末「全部备选项 A1」。</p>
         </div>
       </div>
@@ -460,125 +787,90 @@ footer p+p{margin-top:6px;font-size:12.5px}
         <div class="tl-time">18:30<small>至 21:00</small></div>
         <div class="tl-body">
           <h4>新街口 · 晚餐与逛街 <span class="tl-tag">自由安排</span></h4>
-          <p>德基广场（一期二期）、南京大牌档（一次吃全金陵小吃）。新街口是 1/2 号线换乘枢纽，回酒店最方便。</p>
+          <p>德基广场（一期二期）、南京大牌档。新街口是 1/2 号线换乘枢纽，回酒店最方便。</p>
         </div>
       </div>
     </div>
 
     <div class="gallery">
+      <div class="gallery-head">
+        <h4>明孝陵 · 石象路神道</h4>
+        <span>核对重点：石兽种类与排列</span>
+        <span class="gh-tag">Day2 上午</span>
+      </div>
       <figure>
-        <img src="assets/images/石象路神道-被誉为-南京最美的600米-名字却经常被人写错_搜狐-50d38dc87daf.jpg" alt="明孝陵石象路神道">
-        <figcaption>明孝陵 · 石象路神道，600 米六种石兽</figcaption>
+        <img src="assets/images/石象路神道-被誉为-南京最美的600米-名字却经常被人写错_搜狐-50d38dc87daf.jpg" alt="明孝陵石象路神道" loading="lazy">
+        <figcaption><span class="cap-t">① 神道全景 · 600 米「最美 600 米」</span><span class="cap-c">核对：<b>两侧石兽夹道 + 路面随地形折成月牙形</b>，不是笔直一条。看到笔直大路就是走错了（那是中山陵的陵门大道）。</span></figcaption>
       </figure>
       <figure>
-        <img src="assets/images/这里是上帝打翻的调色盘-这里是美了600年的南京石象路-_我苏网-d181a8efd5c0.png" alt="石象路秋色">
-        <figcaption>深秋的石象路，两侧乌桕与枫香变色</figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
-<!-- ============ DAY 2 ============ -->
-<section id="day2">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="num">DAY 02 · 老城民国 + 秦淮</div>
-      <h2>总统府 · 南京博物院 · 夫子庙</h2>
-      <p>上午长江路民国史，下午中山东路通史，晚上城南秦淮灯影。这一天<strong>两处都要提前抢票</strong>，是全行程最需要规划的一天。</p>
-    </div>
-
-    <div class="day-hero">
-      <img src="assets/images/The-President-s-Palace-in-Nanjin-b279a58ccdd8.webp" alt="南京总统府">
-      <div class="day-hero-cap">
-        <span>总统府 · 门楼</span>
-        <p>中国近代建筑遗存中规模最大的一组，从两江总督署到太平天国天王府，再到民国总统府，600 年官署史叠在同一片院子里。</p>
-      </div>
-    </div>
-
-    <div class="map-block map-day">
-      <h3>Day 2 路线图 · 老城民国 + 秦淮</h3>
-      <p class="map-sub">上午长江路总统府，中午地铁 2 号线东行至南京博物院（明故宫站），下午折回城南老门东，步行 12 分钟到夫子庙看夜秦淮。这一天横跨城中心与城南，全程地铁 + 步行。</p>
-      <div class="map-frame">
-        <iframe src="assets/maps/map-dde817b4.html" title="Day 2 老城民国与秦淮路线地图" loading="lazy"></iframe>
-      </div>
-    </div>
-
-    <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-time">08:50</div>
-        <div class="tl-body">
-          <h4>地铁 2/3 号线「大行宫」站 5 号口 <span class="tl-tag">步行 5 分钟</span></h4>
-          <p>出站即长江路，向东步行到长江路 292 号。大行宫是 2/3 号线换乘站，从新街口过来只有一站。</p>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-time">09:00<small>至 11:30</small></div>
-        <div class="tl-body">
-          <h4>总统府 <span class="tl-tag">2.5 小时</span></h4>
-          <p class="tl-what">中国近代史最重要的<b>遗址型博物馆</b>，也是中国近代建筑遗存中规模最大的一组。它的特殊之处在于：同一片院子，从明初的汉王府、清代的<b>两江总督署</b>、太平天国的<b>天王府</b>，一路叠到<b>中华民国总统府</b>，六百年的官署史压在同一块地基上。林则徐、曾国藩、李鸿章、左宗棠、张之洞都曾以两江总督身份在此办公，1912 年孙中山在这里就任临时大总统。</p>
-          <p>动线建议：<strong>门楼 → 大堂 → 二堂 → 子超楼（总统办公室）→ 近代史陈列 → 煦园</strong>。门楼是 1929 年建成的西式建筑，也是南京最著名的历史照片背景之一。子超楼（因林森字子超得名）里的总统办公室、国务会议厅为原状陈列，桌椅、台灯、日历都按 1948 年前后的样子摆放，是全馆信息密度最高的部分。中轴两侧的史料陈列按晚清、太平天国、民国分段铺开，建议至少留 40 分钟。</p>
-          <p>最后不要错过西侧的<b>煦园</b>：明代汉王府的花园，也是南京现存最完整的江南园林之一。石舫（不系舟）、忘飞阁、桐音馆都临水而建，池水与回廊构成很好的取景层次，是整个总统府里最安静、也最出片的角落。多数游客看完主楼就走，这里往往人少。</p>
-          <p class="tl-tip">门票 35 元，<strong>提前 2 天 0:00 放票</strong>（官方公众号「南京总统府」）；周一闭馆；开放 8:30–18:00（17:00 停止入场）。</p>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-time">11:30<small>至 12:30</small></div>
-        <div class="tl-body">
-          <h4>午餐 · 1912 街区 / 大行宫 <span class="tl-tag">1 小时</span></h4>
-          <p>总统府西侧的 1912 街区是民国风格建筑群，餐饮集中；大行宫地铁站周边也有大量选择。</p>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-time">12:30<small>至 13:00</small></div>
-        <div class="tl-body">
-          <h4>地铁 2 号线「大行宫」→「明故宫」 <span class="tl-tag">2 站</span></h4>
-          <p>1 号口出站，沿中山东路向东步行约 8 分钟到中山东路 321 号。行李可在南博服务中心<strong>免费寄存</strong>。</p>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-time">13:00<small>至 16:30</small></div>
-        <div class="tl-body">
-          <h4>南京博物院 <span class="tl-tag">3.5 小时</span></h4>
-          <p class="tl-what">中国<b>三大博物馆之一</b>（另两座是故宫博物院、上海博物馆），前身是 1933 年蔡元培倡建的国立中央博物院筹备处，主殿由徐敬直设计、梁思成修订，仿辽代大殿造型，是中国近代「固有形式」建筑的代表作。如今是「一院六馆」格局：历史馆、特展馆、数字馆、艺术馆、民国馆、非遗馆，馆藏文物四十余万件，从旧石器时代一路铺到近现代。</p>
-          <p>经典动线：<strong>历史馆 → 数字馆 → 特展馆 → 艺术馆 → 民国馆 → 非遗馆</strong>。历史馆按朝代顺序展开，是全场精华：2 号厅的人鸟兽玉饰、神人兽面纹玉琮（良渚文化），3 号厅的广陵王玺金印、银缕玉衣、错银铜牛灯，4 号厅的「竹林七贤与荣启期」模印砖画（中国现存最早的大型人物砖画），以及唐三彩双鱼瓶、6 号厅的大报恩寺琉璃塔拱门——这些是「一次看全」性价比最高的路线。</p>
-          <p><b>民国馆</b>是南博最特别的一馆：整层按 1930 年代南京街景 1:1 复原，有火车站、邮局、药铺、理发店、银行，可以走进店铺内部，灯光调成黄昏色调，是全场最受欢迎的拍照区，也最适合带孩子。<b>非遗馆</b>常设传统手工艺展演，能看到现场制作。全程走完 3.5 小时是下限，看得细要 4–5 小时，馆内有咖啡与简餐，可以中途休息。</p>
-          <p class="tl-tip">免费，<strong>提前 7 天每日 18:00 一次性放票，无当日票</strong>；周一闭馆；9:00 开门、16:00 停止入馆、17:00 闭馆。爽约有惩罚：30 天内取消满 2 次限约 30 天。</p>
-          <p class="tl-tip">💡 若从<strong>艺术馆</strong>进场排队人明显更少，可反向走：民国馆 → 艺术馆 → 历史馆 → 数字馆 → 特展馆 → 非遗馆。</p>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-time">17:00<small>至 18:30</small></div>
-        <div class="tl-body">
-          <h4>老门东 <span class="tl-tag">1.5 小时</span></h4>
-          <p class="tl-what"><b>历史街区型商业文化区</b>，位于中华门城堡以东、明城墙脚下。「老门东」这个名字来自它相对「门西」的位置——中华门（聚宝门）以东的城南片区，历史上是南京手工业与商贾最密集的地方。街区按修旧如旧的方式重建，马头墙、砖雕门罩、石板路、老井都沿用南京城南民居的做法，不是凭空造的古街。</p>
-          <p>范围不大，主街箍桶巷加几条横巷，一小时能走完，但值得慢慢逛。核心看点是<b>骏惠书屋</b>——一栋整体迁建而来的徽派建筑，木雕梁架极为精细，现为书店；<b>芥子园</b>是李渔故居旧址上重建的小园林；沿街的砖雕门楼与老墙门也值得逐个看。傍晚灯笼亮起后，青砖与暖光形成很强的层次感，比白天上镜得多。</p>
-          <p>比起夫子庙核心区，这里游客密度低一档、小吃价格也实在一些：蒋有记锅贴、小郑酥烧饼、司记豆腐脑、黄勤记凉粉都在步行范围内。从南博打车约 15 分钟，或地铁 3 号线到「武定门」站。Day2 傍晚过来正好把这里当晚饭地点，吃完步行 15 分钟就到夫子庙看灯。</p>
-          <p class="tl-tip">街区免费。牌坊 → 箍桶巷 → 三条营的巷子最好逛，尽头可上城墙看城南屋顶。</p>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-time">18:30<small>至 20:30</small></div>
-        <div class="tl-body">
-          <h4>夫子庙 + 秦淮河步行夜游 <span class="tl-tag">已确认不坐画舫</span></h4>
-          <p class="tl-what">以<b>孔庙与秦淮河风光带</b>为核心的开放式景区。夫子庙即南京文庙，始建于宋代，是明清江南科举文化的中心；庙前的秦淮河两岸则是自六朝延续至今的传统商市与灯船夜游区。这一带的价值不在某一栋建筑，而在「庙、市、河」三者叠在一起的市井格局——白天看文庙与科举遗迹，入夜看灯影与画舫。</p>
-          <p>推荐步行路线：<strong>夫子庙大成殿 → 天下文枢牌坊 → 文德桥 → 乌衣巷 → 桃叶渡</strong>。大成殿是文庙主体，殿前有孔子铜像与泮池；「天下文枢」牌坊是这一带最著名的取景点。文德桥上看秦淮河两岸灯影，是全场最佳机位——桥身正对泮池与大照壁，夜里灯影落在水面上，是南京最经典的一张照片。</p>
-          <p>过桥往南是<b>乌衣巷</b>，东晋王导、谢安两大家族曾居于此，刘禹锡「朱雀桥边野草花，乌衣巷口夕阳斜」写的就是这里，巷内现有王导谢安纪念馆。再往东的<b>桃叶渡</b>是王献之迎妾桃叶的渡口，游客少、水面开阔，适合作为夜游的收尾。整条线慢慢走 2 小时，不必买任何门票。</p>
-          <p class="tl-tip">街区免费，全天开放。画舫按你的决定不坐，改为步行；替代方案见文末 B3。</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="gallery">
-      <figure>
-        <img src="assets/images/The-image-shows-a-grand-traditio-97bf76405afb.jpg" alt="南京博物院大殿">
-        <figcaption>南京博物院 · 仿辽式大殿，一院六馆</figcaption>
+        <img src="assets/images/这里是上帝打翻的调色盘-这里是美了600年的南京石象路-_我苏网-d181a8efd5c0.png" alt="石象路秋色" loading="lazy">
+        <figcaption><span class="cap-t">② 深秋色叶段</span><span class="cap-c">核对：<b>乌桕 / 枫香 / 银杏红黄交织</b>，11 月中下旬是顶峰。你们 11/14 到，正好在变色期内。</span></figcaption>
       </figure>
       <figure>
-        <img src="assets/images/夜幕下-秦淮河畔的夫子庙灯火辉煌-巨大的彩龙灯饰在河岸墙上熠熠生-c5371e660ad6.jpg" alt="夫子庙秦淮河夜景">
-        <figcaption>夫子庙 · 秦淮河夜色，步行看灯影</figcaption>
+        <img src="assets/images/A-group-of-visitors-walks-along--3702a5a2fbf7.jpg" alt="游客沿神道行走，两侧石兽" loading="lazy">
+        <figcaption><span class="cap-t">③ 石兽与人的尺度</span><span class="cap-c">核对：<b>石兽高约 3 米、人只到腿</b>。六种依次是狮、獬豸、骆驼、象、麒麟、马，每种两对（一卧一立）。</span></figcaption>
       </figure>
       <figure>
-        <img src="assets/images/The-illuminated-historic-buildin-b74a42a48f76.webp" alt="老门东夜景">
-        <figcaption>老门东 · 城南民居街区，比夫子庙好吃</figcaption>
+        <img src="assets/images/A-group-of-people-are-walking-al-27c06a493c44.jpg" alt="神道上的游客与石象" loading="lazy">
+        <figcaption><span class="cap-t">④ 中段人流（对照用）</span><span class="cap-c">核对：<b>开头狮子那对最挤</b>，走到骆驼、象、麒麟那几对人才少、背景更干净 —— 别在入口处耗时间。</span></figcaption>
+      </figure>
+
+      <div class="gallery-head">
+        <h4>中山陵 · 392 级台阶</h4>
+        <span>核对重点：蓝琉璃顶 + 中轴台阶</span>
+        <span class="gh-tag">Day2 下午</span>
+      </div>
+      <figure>
+        <img src="assets/images/A-grand-staircase-leading-up-to--3959b746e369.jpg" alt="中山陵大台阶" loading="lazy">
+        <figcaption><span class="cap-t">① 392 级花岗岩大台阶</span><span class="cap-c">核对：<b>从博爱坊直上祭堂、宽到能并排走十几人</b>。台阶分十段平台，从下往上看只见台阶不见平台，从上往下看只见平台不见台阶。</span></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/The-grand-red-building-with-curv-af407a7acabe.jpg" alt="中山陵祭堂蓝琉璃顶" loading="lazy">
+        <figcaption><span class="cap-t">② 祭堂 · 蓝琉璃顶</span><span class="cap-c">核对：<b>蓝色琉璃瓦 + 三个拱门 + 门额「民族 民权 民生」</b>。这是全场唯一的地标正面，登顶后先在这里拍。</span></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/An-aerial-view-captures-the-Sun--400b956125a7.jpg" alt="中山陵航拍全景" loading="lazy">
+        <figcaption><span class="cap-t">③ 航拍全景（认整体格局）</span><span class="cap-c">核对：<b>钟形平面、依山而建、中轴一线到底</b>。现场看不到这个角度，但用它判断自己是否在正确的中轴上。</span></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/The-aerial-view-shows-the-lush-a-cfcfaa2144e3.jpg" alt="中山陵紫金山南麓林海" loading="lazy">
+        <figcaption><span class="cap-t">④ 紫金山南麓林海</span><span class="cap-c">核对：<b>陵寝三面环山、满山常绿</b>。若四周看不到山，说明还在山下的广场区，继续往上走。</span></figcaption>
+      </figure>
+
+      <div class="gallery-head">
+        <h4>音乐台</h4>
+        <span>核对重点：半圆扇形 + 白鸽 + 回音壁</span>
+        <span class="gh-tag">中山陵下来顺路</span>
+      </div>
+      <figure>
+        <img src="assets/images/南京中山陵音乐台专题模板-南京中山陵音乐台图片素材下载-我图网-129f68169610.webp" alt="中山陵音乐台半圆扇形看台" loading="lazy">
+        <figcaption><span class="cap-t">① 半圆扇形看台</span><span class="cap-c">核对：<b>弧形层层台阶 + 中心小舞台 + 背后照壁</b>。这是中国最早的露天音乐台之一，形制像一把打开的扇子。</span></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/南京中山陵音乐台专题模板-南京中山陵音乐台图片素材下载-我图网-49fbfc023608.webp" alt="音乐台白鸽与草坪" loading="lazy">
+        <figcaption><span class="cap-t">② 白鸽与草坪</span><span class="cap-c">核对：<b>成群白鸽落在扇形台阶与草坪上</b>。这里最出片的是鸽子起飞那一刻，等一班不用太久。</span></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/Visitors-gather-on-the-stone-ste-1cb642fd734c.webp" alt="游客在石阶上休息" loading="lazy">
+        <figcaption><span class="cap-t">③ 台阶上的游客（对照用）</span><span class="cap-c">核对：<b>台阶就是座位</b>，没有固定座椅。从中山陵下来后在这里坐 10 分钟，是全天最舒服的一段。</span></figcaption>
+      </figure>
+
+      <div class="gallery-head">
+        <h4>美龄宫</h4>
+        <span>核对重点：项链形梧桐环 + 三层小楼</span>
+        <span class="gh-tag">Day2 收尾</span>
+      </div>
+      <figure>
+        <img src="assets/images/A-two-story-building-with-a-text-b90774da3628.avif" alt="美龄宫主楼外观" loading="lazy">
+        <figcaption><span class="cap-t">① 主楼 · 三层（外观似两层）</span><span class="cap-c">核对：<b>黄墙 + 绿色琉璃瓦顶 + 前伸的门廊平台</b>。整栋是「凤宫」形制的西式小楼，不是中式殿宇。</span></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/A-two-story-brick-house-with-lar-cd18cb4ef1ea.avif" alt="美龄宫砖砌立面与窗" loading="lazy">
+        <figcaption><span class="cap-t">② 立面细节 · 砖墙与大窗</span><span class="cap-c">核对：<b>清水砖墙 + 大面积钢窗 + 汉白玉栏杆</b>。室内保留原家具与陈设，可上到顶层看平台。</span></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/The-illuminated-building-with-a--aa20ebaac5dc.jpg" alt="美龄宫夜景亮灯" loading="lazy">
+        <figcaption><span class="cap-t">③ 亮灯时分（若晚到对照用）</span><span class="cap-c">核对：<b>整栋楼被暖光打亮、梧桐环抱</b>。你们按行程 16:30 前后到，天还没黑，看到的是白天版本，别因天色不符怀疑走错。</span></figcaption>
       </figure>
     </div>
   </div>
@@ -587,92 +879,211 @@ footer p+p{margin-top:6px;font-size:12.5px}
 <section id="day3">
   <div class="wrap">
     <div class="sec-head">
-      <div class="num">DAY 03 · 城墙湖山</div>
-      <h2>台城城墙 · 鸡鸣寺 · 玄武湖 · 颐和路</h2>
-      <p>城北一线，节奏最松。上午登城墙看湖与寺，下午二选一：环湖（自然）或颐和路（人文）。</p>
+      <div class="num">DAY 03 · 返程日 · 18:47 南京南发车</div>
+      <h2>南京博物院 · 颐和路 · 鸡鸣寺 · 解放门 · 玄武门</h2>
+      <p>今天的顺序是<strong>“先远后近、一路向北”</strong>：上午先去城东南的南博（9:00 开馆，人最少、能看 2.5 小时），中午回城西北的颐和路，下午上鸡鸣寺、从解放门登台城、玄武门下墙。<strong>16:30 前必须离开玄武门</strong>，17:45 前到南京南站进站。</p>
     </div>
 
     <div class="day-hero">
-      <img src="assets/images/南京台城-明城墙现存最高大-最完好的一段-古与新在此交相辉映_搜-9fbb00c6fb7b.jpg" alt="南京台城明城墙">
+      <img src="assets/images/650岁南京城墙-最美1400米-修缮完成-城墙北线恢复全线开放-963fcad3ec25.jpg" alt="南京明城墙台城段">
       <div class="day-hero-cap">
-        <span>台城 · 明城墙</span>
-        <p>解放门到玄武门这一段，是明城墙现存最高大完好的一段，墙内是鸡鸣寺，墙外是玄武湖。</p>
+        <span>台城城墙 · 解放门 → 玄武门</span>
+        <p>返程日的最后一站：从解放门登上明城墙保存最完整的一段，沿墙往西走到玄武门，墙下是玄武湖，墙内是鸡鸣寺——一段城墙同时框住湖、寺、城三种景，然后直接下墙坐地铁去南京南。</p>
       </div>
     </div>
 
     <div class="map-block map-day">
-      <h3>Day 3 路线图 · 城墙湖山</h3>
-      <p class="map-sub">上午解放门登台城城墙走到玄武门，下城墙步行 8 分钟到鸡鸣寺，再进玄武湖环洲—樱洲—菱洲。下午往西去颐和路民国公馆区，地铁 1 号线一站到鼓楼再步行。</p>
+      <h3>Day 3 路线图 · 南博 → 颐和路 → 鸡鸣寺 → 解放门 → 玄武门</h3>
+      <p class="map-sub">上午在城东南（南博），中午横穿到城西北（颐和路），下午沿城北一路向东向北收尾（鸡鸣寺 → 解放门 → 玄武门），最后从玄武门坐地铁 1 号线直达南京南。全天只有一次长距离横穿，放在中午，不赶。</p>
       <div class="map-frame">
-        <iframe src="assets/maps/map-31d59f87.html" title="Day 3 城墙湖山路线地图" loading="lazy"></iframe>
+        <iframe src="assets/maps/map-e48fd3d3.html" title="Day 3 南博与城北城墙路线地图" loading="lazy"></iframe>
+      </div>
+    </div>
+
+    <div class="depart-card">
+      <div class="depart-head">
+        <h3>返程倒排 · 18:47 南京南发车</h3>
+        <span class="depart-badge">硬约束</span>
+      </div>
+      <p class="depart-lead">四个时间点卡死，任何一环晚了就赶不上车。周五傍晚 1 号线会挤，宁可早走 15 分钟。</p>
+      <ol class="depart-steps">
+        <li>
+          <span class="ds-time">18:47</span>
+          <span class="ds-text"><b>高铁发车</b><small>南京南站</small></span>
+        </li>
+        <li>
+          <span class="ds-time">17:45</span>
+          <span class="ds-text"><b>必须进站</b><small>安检 + 找站台，留足 1 小时</small></span>
+        </li>
+        <li>
+          <span class="ds-time">17:00</span>
+          <span class="ds-text"><b>上地铁</b><small>玄武门站 1 号线，约 35 分钟直达</small></span>
+        </li>
+        <li class="is-key">
+          <span class="ds-time">16:30</span>
+          <span class="ds-text"><b>离开最后一个景点</b><small>玄武门，不环湖</small></span>
+        </li>
+      </ol>
+      <div class="depart-note">
+        <p><b>行李别拖。</b>早上出门前把箱子寄存在酒店前台（免费），或直接寄存在<strong>南京南站</strong>（地铁 1/3 号线站厅层自助寄存柜，按小时计费）。若寄在酒店、下午要回去取，会多花 30–40 分钟，玄武门离场必须提前到 <strong>16:00</strong>。所以更推荐<strong>早上直接寄到南京南</strong>，或住新街口/大行宫（1 号线上，回酒店取顺路）。</p>
+        <p class="depart-meta">地铁参考：玄武门（1 号线）→ 南京南约 35 分钟直达；颐和路（4 号线云南路）→ 南京南约 40 分钟，需换乘 1 次。</p>
       </div>
     </div>
 
     <div class="timeline">
       <div class="tl-item">
-        <div class="tl-time">09:00<small>至 10:30</small></div>
+        <div class="tl-time">08:40<small>至 09:00</small></div>
         <div class="tl-body">
-          <h4>台城段明城墙 <span class="tl-tag">1.5 小时</span></h4>
-          <p class="tl-what"><b>古代城防工事遗存</b>。南京明城墙建于 1366–1393 年，全长 35.3 公里，是世界现存最长的古代城墙；其中<b>台城段</b>（解放门至玄武门）是保存最高大、最完整、也最适合步行的一段。「台城」原是六朝宫城之名，后人把这段城墙附会为台城旧址，名字沿用至今。</p>
-          <p>从解放门登城，向西走到玄武门，全程约 1.5 公里。这段城墙的特殊之处在于<strong>一墙之内同时收纳了鸡鸣寺的黄墙、玄武湖的水面和紫峰大厦的玻璃幕墙</strong>——六百年的砖、二十年的玻璃，同框在一个画面里，是南京最出名的「古今同框」机位。城墙顶面宽阔，可以并行数人，两侧都有垛口，走起来毫无压迫感。</p>
-          <p>途中会经过<b>九华山</b>与<b>玄武门</b>两处出口，体力不支可随时下城。城砖上还能看到当年的烧制铭文——府、县、窑匠、提调官的名字都刻在砖侧，这是明初「物勒工名」的责任制，也是南京城墙最有意思的细节之一。建议解放门上、玄武门下，一路向西不折返，下城正好进玄武湖。</p>
-          <p class="tl-tip">门票 30 元。地铁 3/4 号线「鸡鸣寺」站或 3 号线「南京站」方向均可；建议解放门上、玄武门下，一路向西不折返。</p>
+          <h4>地铁 2 号线「明故宫」站 <span class="tl-tag">约 20 分钟</span></h4>
+          <p>从新街口/大行宫坐 2 号线往经天路方向，「明故宫」站 1 号口出，沿中山东路向东步行约 8 分钟到中山东路 321 号。9:00 开馆，早到 20 分钟排队最短——这是全天唯一需要赶早的一段。</p>
         </div>
       </div>
       <div class="tl-item">
-        <div class="tl-time">10:30<small>至 11:30</small></div>
+        <div class="tl-time">09:00<small>至 11:30</small></div>
         <div class="tl-body">
-          <h4>鸡鸣寺 <span class="tl-tag">1 小时</span></h4>
-          <p class="tl-what"><b>汉传佛教寺院</b>，南京最古老的梵刹之一，始建于西晋永康元年（300 年），距今一千七百余年，素有「南朝第一寺」「南朝四百八十寺之首」之称。它依鸡笼山而建，山门在山脚、殿宇层层向上，是典型的「依山式」伽蓝布局。现在是一座香火旺盛的在用寺院，不是遗址公园。</p>
-          <p>进寺后一路拾级而上：天王殿、大雄宝殿、观音殿、豁蒙楼，最高处是<b>药师佛塔</b>。塔为七级八面，可登塔俯瞰玄武湖与明城墙，是这一带最高的观景点。寺内黄墙、灰瓦与山势结合得很紧凑，加上香火烟气，氛围比多数景区寺院更真实。豁蒙楼是民国时期文人常聚之处，楼上有茶座，可以坐下来歇脚。</p>
-          <p>三月下旬寺前的<b>鸡鸣寺路</b>樱花盛开，黄墙、樱花、城墙、紫峰大厦同框，是南京春季最著名的画面，也是人流最高峰，需要提前预约且几乎无法拍照。平日则相当安静，反而更能看清寺院本身。寺内素面馆口碑不错，可当简餐；门票 10 元含三支香。</p>
-          <p class="tl-tip">门票 10 元（含三支香）。寺内素面馆口碑不错，可当简餐。</p>
+          <h4>南京博物院 <span class="tl-tag">2.5 小时</span> <span class="tl-tag tag-red">需预约 · 最紧张</span></h4>
+          <p class="tl-sub">中国三大博物馆之一 · 六馆合一 · 江苏通史 + 民国街景</p>
+          <p class="tl-what">中国<b>三大博物馆之一</b>（另两座是故宫博物院、上海博物馆），前身是 1933 年蔡元培倡建的国立中央博物院，也是中国第一座由国家投资兴建的大型综合博物馆。建筑本身即是文物：主殿为仿辽代大殿的「仿古殿式」建筑，由徐敬直设计、梁思成修订，1930 年代「中国固有之形式」建筑思潮的代表作。</p>
+          <p>现在实行<b>「一院六馆」</b>格局：<b>历史馆</b>是主体，按江苏地域通史陈列，从史前到明清，镇馆之宝如西汉金兽、竹林七贤砖画、明釉里红岁寒三友纹梅瓶都在这里；<b>民国馆</b>是一条完整的民国街景复原，邮局、火车站、药铺、理发店实景搭建，可以走进去，是全馆最受欢迎、也最适合拍照的一馆；<b>艺术馆</b>藏历代书画与傅抱石作品；<b>数字馆</b>用多媒体演绎古画与文物；<b>特展馆</b>轮换大展；<b>非遗馆</b>展示江苏传统技艺。</p>
+          <p class="tl-tip"><b>游览策略</b>：<strong>历史馆（1.5 h，看镇馆之宝）→ 民国馆（40 min，拍照）→ 特展馆/艺术馆（20 min，看当天大展）</strong>，数字馆与非遗馆直接跳过。历史馆<strong>按朝代顺序单向走到底</strong>，西汉金兽、竹林七贤砖画、明釉里红梅瓶三件镇馆之宝分散在不同展厅，<strong>进门先拍一张展馆平面图</strong>，否则很容易走完才发现漏了。民国馆在负一层，是一条可以走进去的街景，<strong>从入口一路走到尽头再出，不要中途折回</strong>。想细看历史馆的话，就把颐和路的停留压到 30 分钟。</p>
+          <p class="tl-tip"><strong>免费但必须提前 7 天 18:00 抢票</strong>（「南京博物院」公众号/小程序，一次性放票，无当日票）；周一闭馆；<strong>16:00 停止入馆</strong>，17:00 闭馆。今天 9:00 开馆就进，10:45 离馆，时间很稳。爽约惩罚：30 天内累计 2 次未取消爽约，限制预约 30 天。</p>
         </div>
       </div>
       <div class="tl-item">
-        <div class="tl-time">11:30<small>至 13:00</small></div>
+        <div class="tl-time">11:30<small>至 12:20</small></div>
         <div class="tl-body">
-          <h4>午餐 · 湖南路 / 狮子桥 <span class="tl-tag">1.5 小时</span></h4>
-          <p>狮子桥美食街是南京老牌小吃街，鸭血粉丝、牛肉锅贴、小笼包都能找到。从玄武门出来步行或打车约 10 分钟。</p>
+          <h4>午餐 · 转场颐和路 <span class="tl-tag">约 50 分钟</span></h4>
+          <p>南博周边吃饭选择少，建议直接坐地铁去颐和路一带吃：2 号线「明故宫」→「大行宫」换 3 号线到「浮桥」，或 2 号线到「上海路」下车，附近<strong>上海路/宁海路</strong>一带小馆密集（皮肚面、鸭血粉丝、狮子桥方向也可）。吃饭 + 地铁控制在 1 小时内。</p>
         </div>
       </div>
       <div class="tl-item">
-        <div class="tl-time">13:00<small>至 15:00</small></div>
+        <div class="tl-time">12:30<small>至 13:40</small></div>
         <div class="tl-body">
-          <h4>玄武湖环湖 <span class="tl-tag">2 小时</span> <span class="tl-tag tag-blue">默认 C1</span></h4>
-          <p class="tl-what"><b>城市湖泊公园</b>，江南地区最大的城内湖泊，古称桑泊、后湖，六朝时是皇家园林与水军操练之地，明代成为存放黄册（户口赋役档案）的后湖黄册库，与城墙一体封闭了两百多年。如今是完全免费开放的市民公园，湖中五洲（环洲、樱洲、菱洲、梁洲、翠洲）以堤桥相连。</p>
-          <p>从玄武门进，走<b>环洲 → 樱洲 → 菱洲</b>一段即可，不必环全湖——全环约 10 公里，走完要三小时以上。环洲有假山与儿童乐园，樱洲春季樱花成片，菱洲视野最开阔。湖面上看明城墙与紫金山倒影，是南京最舒服的两小时：水面宽、风大、树荫足，夏天比市区低两三度。</p>
-          <p>园内有观光车与游船，脚力有限可以坐车；湖边步道平坦，也适合骑行。傍晚时分从菱洲往玄武门方向回望，城墙、湖水、落日三层叠在一起，是这一天的收尾画面。免费开放，全天可进。</p>
-          <p class="tl-tip">免费开放。园内有观光车和游船，脚力有限可坐车。</p>
+          <h4>颐和路民国公馆区 <span class="tl-tag">1 小时</span></h4>
+          <p class="tl-sub">1700 余户官邸公馆 · 梧桐深处的民国街区 · 免费</p>
+          <p class="tl-what">颐和路、珞珈路、牯岭路、江苏路一带，是 1927 年《首都计划》划定的<b>「第一住宅区」</b>，也是中国规模最大、保存最完整的民国公馆建筑群——1700 多户官邸、使馆与名人旧居藏在法国梧桐深处，多为 1930 年代的花园洋房，西班牙式、英式、日式杂陈。</p>
+          <p>它不是一个「景点」，没有大门也没有门票，<b>玩法就是走路</b>：颐和路主街看连排洋房的院墙与门牌，珞珈路、牯岭路更安静，秋天梧桐落叶铺满路面，是南京最出片的散步路线之一。多数宅子不开放入内，看的是街景与建筑外立面。</p>
+          <p class="tl-tip"><b>游览策略</b>：颐和路是「走路型」街区，<strong>没有大门也没有门票，最短走法是一个小环</strong>：地铁 4 号线「云南路」或「浮桥」下 → <strong>颐和路主街（看连排洋房院墙与门牌）→ 珞珈路（更安静、梧桐落叶最厚）→ 牯岭路 → 回到主街</strong>，全程约 1.5 km，1 小时刚好。多数宅子不开放入内，<strong>看的是外立面与街景，不要逐户找门牌号</strong>，那是最容易把时间耗光的做法。13:40 必须撤。</p>
         </div>
       </div>
       <div class="tl-item">
-        <div class="tl-time">15:00<small>至 17:00</small></div>
+        <div class="tl-time">13:40<small>至 14:10</small></div>
         <div class="tl-body">
-          <h4>颐和路民国公馆区 <span class="tl-tag">2 小时</span> <span class="tl-tag tag-blue">默认 C2</span></h4>
-          <p class="tl-what"><b>民国公馆建筑群历史街区</b>。1927 年国民政府定都南京后推行「首都计划」，在城北颐和路一带规划了高级住宅区，十几年间建成 1700 余户官邸公馆，政要、外交官、实业家、文化名人多居于此，被称为「民国使馆区」。这是中国规模最大、保存最完整的民国住宅建筑群，如今是开放式街区，不收费。</p>
-          <p>建筑本身是最大看点：黄墙红瓦、坡屋顶、老虎窗、拱券门廊，西式骨架里嵌着中式细节，几乎每一栋门口都挂着「南京市重要近现代建筑」的铭牌，写明旧主与建造年代。街道两侧的法国梧桐树龄近百年，夏天整条路都在树荫里，秋天落叶铺满路面。</p>
-          <p>推荐路线：<b>江苏路 → 颐和路 → 珞珈路 → 牯岭路</b>，全程约 2 公里，慢慢走两小时。不排队、不收费、不需要预约，是南京最出片的散步路线，也是行程里最松弛的一段。部分院落（如颐和路十二片区）已修缮开放，可入内参观，需另行预约。地铁 4 号线「云南路」站或 1 号线「鼓楼」站步行可达。</p>
-          <p class="tl-tip">免费。地铁 4 号线「云南路」站或 1 号线「鼓楼」站步行可达。推荐路线：江苏路 → 颐和路 → 珞珈路 → 牯岭路。</p>
+          <h4>打车/地铁去鸡鸣寺 <span class="tl-tag">约 25 分钟</span></h4>
+          <p>从颐和路到鸡鸣寺没有直达地铁，<strong>建议打车</strong>（约 15 分钟、20 元出头），或 4 号线「云南路」→「鸡鸣寺」一站直达（含步行约 25 分钟）。这一段是全天唯一需要打车的，别省。</p>
         </div>
       </div>
       <div class="tl-item">
-        <div class="tl-time">18:00</div>
+        <div class="tl-time">14:10<small>至 15:10</small></div>
         <div class="tl-body">
-          <h4>新街口收尾 / 返程 <span class="tl-tag">自由安排</span></h4>
-          <p>颐和路到新街口打车约 10 分钟，地铁 1 号线一站。可在此买盐水鸭、板鸭带走。</p>
+          <h4>古鸡鸣寺 <span class="tl-tag">1 小时</span></h4>
+          <p class="tl-sub">南京最古老的梵刹之一 · 「南朝第一寺」 · 药师佛塔</p>
+          <p class="tl-what">南京最古老的梵刹之一，始建于西晋永康元年（300 年），有「南朝四百八十寺」之首的说法，故称「南朝第一寺」。建筑群依鸡鸣山而建，从山门一路向上，天王殿、大雄宝殿、观音殿、药师佛塔层层升高，最后是豁蒙楼与景阳楼。</p>
+          <p>核心看点是<b>药师佛塔</b>：七层八面，塔高约 44 米，1990 年在原址重建，登塔可俯瞰玄武湖与城墙。塔下那面黄墙是鸡鸣寺最经典的取景背景，配 11 月的银杏正好。寺前的<b>鸡鸣寺路</b>两侧种满樱花，春天是粉色隧道，11 月则是银杏与黄墙的组合，人少好走。</p>
+          <p class="tl-tip"><b>游览策略</b>：从山门进、<strong>一路向上到药师佛塔，再原路下山</strong>——寺院依山而建，没有第二条下山路，<strong>不必绕行</strong>。重点三处：<b>大雄宝殿</b>、<b>药师佛塔下的黄墙</b>（配 11 月银杏是鸡鸣寺最经典的一帧）、<b>豁蒙楼</b>（俯瞰玄武湖与城墙的机位，人最少）。登塔要另加 20 分钟，赶时间就跳过。门票 10 元（含三支香），开放 7:30–17:00，<strong>17:30 停止入场</strong>。从山门到塔下黄墙约 20 分钟，1 小时够。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">15:10<small>至 16:10</small></div>
+        <div class="tl-body">
+          <h4>解放门 → 台城城墙 → 玄武门 <span class="tl-tag">1 小时</span></h4>
+          <p class="tl-sub">明城墙保存最完整的一段 · 沿墙西行 1.4 km · 一路看玄武湖</p>
+          <p class="tl-what">从鸡鸣寺出来步行 5 分钟就是<b>解放门</b>——这里是台城城墙的登城口，也是今天最顺的一段：<strong>解放门上墙，沿城墙一路往西走到玄武门，全程约 1.4 公里、无台阶、走 25–30 分钟</strong>，墙外是玄武湖五洲与紫金山天际线，墙内是鸡鸣寺的黄墙与药师塔。一段城墙上同时框住湖、寺、城三种景，是南京唯一的一处。</p>
+          <p>南京城墙始建于元至正二十六年（1366 年），由朱元璋亲自审定格局，全长 35.267 公里，现存 25.1 公里，仍是<b>世界最长、规模最大的砖石城墙</b>。城砖上多数还留着烧制州府与工匠的名字，是明初「物勒工名」的质量追溯制度。「台城」这个名字来自六朝宫城旧址，现在特指解放门到太平门这一段的城墙景区。</p>
+          <p>秋天的城墙上是看玄武湖银杏与湖面反光最好的位置，比在湖边走更出片。<strong>玄武门是下城口</strong>，下墙即玄武湖西南门。</p>
+          <p class="tl-tip">门票 30 元，开放 8:30–17:00。<b>游览策略</b>：<strong>解放门上墙 → 沿墙单向往西 → 玄武门下墙，全程 1.4 km 不折返</strong>，这是全天最顺的一段。走在墙上时<strong>北侧看湖、南侧看鸡鸣寺黄墙与药师塔</strong>，两种景交替出现，不要只盯一边。中途的<b>台城书房</b>与几处雉堞缺口是拍湖景的好位置，人少。<strong>16:10 必须下墙</strong>——这一段是今天的硬节点，晚了下墙就赶不上车。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">16:10<small>至 16:30</small></div>
+        <div class="tl-body">
+          <h4>玄武门 · 玄武湖门口看一眼 <span class="tl-tag">20 分钟</span> <span class="tl-tag tag-red">最后收尾</span></h4>
+          <p class="tl-sub">玄武湖西南门 · 免费 · 只到门口，不环湖</p>
+          <p>下城墙就是<b>玄武门</b>，玄武湖的西南门，免费。今天<strong>不环湖</strong>（全环约 10 km，走不完），只在门口和湖边拍几张城墙倒影，16:30 准时撤。</p>
+          <p class="tl-tip"><b>游览策略</b>：<strong>只看不环湖</strong>。下墙后就在门内湖边拍两张城墙倒影（<strong>回头拍城墙比拍湖面好看</strong>），不要往五洲方向走——全环约 10 km，走不完。玄武门地铁站就在门口（1 号线），进站即走。<strong>16:30 上车 → 17:05 到南京南 → 17:45 前进站 → 18:47 发车</strong>，中间还有时间买杯咖啡和伴手礼。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">16:30<small>至 18:47</small></div>
+        <div class="tl-body">
+          <h4>地铁 1 号线 → 南京南站 → 返程 <span class="tl-tag">约 35 分钟</span></h4>
+          <p>玄武门站坐 <strong>1 号线（往中国药科大学方向）直达南京南站</strong>，约 35 分钟，不用换乘。出站后按指示牌上到候车层，安检 + 进站约 15 分钟。<strong>17:45 前务必进站</strong>；若行李寄存在酒店，需先回酒店取（+30 分钟），那就把玄武门的离场时间提前到 16:00。</p>
+          <p>晚饭在南京南站候车层解决（有鸭血粉丝、快餐、便利店），或上车前买好盐水鸭真空装带走。</p>
         </div>
       </div>
     </div>
 
     <div class="gallery">
+      <div class="gallery-head">
+        <h4>南京博物院</h4>
+        <span>09:00–11:30</span>
+        <span class="gh-tag">中山东路 321 号</span>
+      </div>
       <figure>
-        <img src="assets/images/The-cherry-blossoms-in-the-foreg-39305cb92d0a.jpg" alt="鸡鸣寺樱花与城墙">
-        <figcaption>鸡鸣寺 · 樱花季与明城墙同框（3 月下旬）</figcaption>
+        <img src="assets/images/The-image-shows-a-grand-traditio-97bf76405afb.jpg" alt="南京博物院仿辽式大殿" loading="lazy">
+        <figcaption><span class="cap-t">① 主殿外观 · 仿辽代大殿</span><span class="cap-c">核对：<b>黄褐色琉璃瓦 + 平缓大屋顶 + 中央高起的方形门楼</b>，屋顶几乎不出檐角，与常见的明清飞檐完全不同。这是徐敬直设计、梁思成修订的「仿古殿式」。</span></figcaption>
       </figure>
       <figure>
-        <img src="assets/images/A-pale-yellow民国公馆-stands-behind--5682cb2cb1dc.jpg" alt="颐和路民国公馆">
-        <figcaption>颐和路 · 梧桐深处的民国公馆</figcaption>
+        <img src="assets/images/The-main-hall-of-the-Nanjing-Mus-d48759ff43dc.jpg" alt="南京博物院民国馆街景" loading="lazy">
+        <figcaption><span class="cap-t">② 民国馆 · 负一层实景街</span><span class="cap-c">核对：<b>可以走进去的一条街</b>，邮局、火车站、药铺、理发店全是实景搭建。在负一层，从入口一路走到尽头再出，别中途折回。</span></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/A-spacious-exhibition-hall-with--a8e96d326b1f.jpg" alt="南京博物院历史馆展厅" loading="lazy">
+        <figcaption><span class="cap-t">③ 历史馆展厅 · 江苏通史</span><span class="cap-c">核对：<b>按朝代顺序单向走到底</b>。西汉金兽、竹林闲七贤砖画、明釉里红岁寒三友梅瓶分散在不同展厅 —— 进门先拍一张平面图。</span></figcaption>
+      </figure>
+
+      <div class="gallery-head">
+        <h4>颐和路民国公馆区</h4>
+        <span>12:30–13:40</span>
+        <span class="gh-tag">免费 · 开放式街区</span>
+      </div>
+      <figure>
+        <img src="assets/images/A-stately民国公馆区老洋房-with-grey-bric-098aa2d454f0.jpg" alt="颐和路民国公馆老洋房" loading="lazy">
+        <figcaption><span class="cap-t">① 民国公馆 · 灰砖老洋房</span><span class="cap-c">核对：<b>灰砖墙 + 坡屋顶 + 院墙铁门</b>，多数门口挂着「某某公馆」铭牌。这一带 200 多栋，不必逐栋找，认风格即可。</span></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/A-pale-yellow民国公馆-stands-behind--5682cb2cb1dc.jpg" alt="颐和路淡黄色民国公馆" loading="lazy">
+        <figcaption><span class="cap-t">② 淡黄色外墙 · 梧桐掩映</span><span class="cap-c">核对：<b>淡黄 / 米色拉毛外墙 + 高大梧桐</b>。11 月梧桐叶黄，是这条路最好看的时候 —— 走的是「颐和路—珞珈路—牯岭路」这一圈。</span></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/A-two-story-building-with-a-text-b90774da3628.avif" alt="颐和路街区两层小楼" loading="lazy">
+        <figcaption><span class="cap-t">③ 街角两层小楼</span><span class="cap-c">核对：<b>两层、体量不大、沿街成排</b>。颐和路不是景区、没有大门与门票，<b>看到挂着门牌号的安静马路就是对的</b>，别找「入口」。</span></figcaption>
+      </figure>
+
+      <div class="gallery-head">
+        <h4>古鸡鸣寺</h4>
+        <span>14:10–15:10</span>
+        <span class="gh-tag">门票 10 元</span>
+      </div>
+      <figure>
+        <img src="assets/images/A-traditional-Chinese-pagoda-sur-07e285f1e0f8.jpg" alt="鸡鸣寺药师佛塔" loading="lazy">
+        <figcaption><span class="cap-t">① 药师佛塔 · 黄墙</span><span class="cap-c">核对：<b>七级八面砖塔 + 明黄色寺墙</b>，塔在山上、要顺着台阶往上才看得到全貌。这是鸡鸣寺唯一的地标，从解放门城墙上回望也看它。</span></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/A-pathway-lined-with-cherry-blos-5314a7573c6a.webp" alt="鸡鸣寺路樱花大道" loading="lazy">
+        <figcaption><span class="cap-t">② 鸡鸣寺路 · 上山的坡道</span><span class="cap-c">核对：<b>一条上坡路直对寺门与塔</b>（图中是 3 月樱花版）。11 月没有花，但路的走向与尽头的塔不变 —— <b>认塔不认花</b>。</span></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/A-traditional-Chinese-style-buil-c1db93948ea9.jpg" alt="鸡鸣寺殿宇黄墙飞檐" loading="lazy">
+        <figcaption><span class="cap-t">③ 殿宇 · 黄墙飞檐</span><span class="cap-c">核对：<b>黄墙 + 灰瓦 + 翘角</b>，殿与殿之间靠台阶串联、一路向上。寺内单向礼佛动线，跟着人流往上走就不会错。</span></figcaption>
+      </figure>
+
+      <div class="gallery-head">
+        <h4>解放门 → 台城城墙 → 玄武门</h4>
+        <span>15:10–16:10</span>
+        <span class="gh-tag">门票 30 元 · 1.4 km</span>
+      </div>
+      <figure>
+        <img src="assets/images/南京台城-明城墙现存最高大-最完好的一段-古与新在此交相辉映_搜-9fbb00c6fb7b.jpg" alt="南京台城城墙段" loading="lazy">
+        <figcaption><span class="cap-t">① 台城段城墙 · 墙顶步道</span><span class="cap-c">核对：<b>宽阔砖砌墙顶 + 一侧雉堞（垛口）+ 一侧矮墙</b>，可以并排走人。上墙后<b>北侧是玄武湖、南侧是鸡鸣寺黄墙与药师塔</b>，两种景交替出现。</span></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/The-view-through-the-vibrant-red-29228a4e3702.webp" alt="城墙垛口望出去的景观" loading="lazy">
+        <figcaption><span class="cap-t">② 从垛口看出去</span><span class="cap-c">核对：<b>透过方形垛口拍到湖面 / 城市天际线</b>。这是城墙上最好用的取景框，中途几处雉堞缺口人最少。</span></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/650岁南京城墙-最美1400米-修缮完成-城墙北线恢复全线开放-963fcad3ec25.jpg" alt="南京城墙北线全景" loading="lazy">
+        <figcaption><span class="cap-t">③ 北线全景（认走向）</span><span class="cap-c">核对：<b>城墙沿湖一路向西延伸</b>。你们从解放门上、往西走到玄武门下，<b>全程不折返</b>；16:10 必须下墙，这是今天的硬节点。</span></figcaption>
       </figure>
     </div>
   </div>
@@ -682,8 +1093,8 @@ footer p+p{margin-top:6px;font-size:12.5px}
   <div class="wrap">
     <div class="sec-head">
       <div class="num">BOOKING</div>
-      <h2>预约清单：3 处必抢 + 2 处备选</h2>
-      <p>南京热门场馆全部实名预约制，<strong>没有现场票</strong>。以下是核实过的放票规则，按倒排时间准备。</p>
+      <h2>预约清单：3 处必抢，其余现场买票</h2>
+      <p>按本行程，<strong>只有南博、总统府、中山陵三处必须提前抢</strong>，且都是实名制、无现场票。其余景点现场买票即可。</p>
     </div>
 
     <div class="table-wrap">
@@ -699,35 +1110,56 @@ footer p+p{margin-top:6px;font-size:12.5px}
         </thead>
         <tbody>
           <tr class="row-hot">
-            <td><strong>南京博物院</strong><br><span class="sm">中山东路 321 号</span></td>
+            <td><strong>南京博物院</strong><br><span class="sm">Day3 上午 · 中山东路 321 号</span></td>
             <td>免费</td>
             <td><strong>提前 7 天</strong><br>每日 <strong>18:00</strong> 一次性放票</td>
             <td>「南京博物院」公众号 / 小程序</td>
-            <td>无当日票；16:00 停止入馆；周一闭馆。<strong>爽约惩罚：30 天内累计 2 次未取消爽约，限制预约 30 天</strong>。定好闹钟 17:58 蹲守。</td>
+            <td><strong>最紧张的一处</strong>。无当日票；16:00 停止入馆；周一闭馆。爽约惩罚：30 天内累计 2 次未取消爽约，限制预约 30 天。定好闹钟 17:58 蹲守。</td>
           </tr>
           <tr>
-            <td><strong>总统府</strong><br><span class="sm">长江路 292 号</span></td>
+            <td><strong>总统府</strong><br><span class="sm">Day1 下午 · 长江路 292 号</span></td>
             <td>35 元</td>
             <td><strong>提前 2 天</strong><br>每日 <strong>0:00</strong> 放票</td>
             <td>「南京总统府」公众号</td>
-            <td>周一闭馆。放票量有限，节假日建议 0:00 准时抢。</td>
+            <td>周一闭馆；8:30–18:00 开放，17:00 停止入场。放票量有限，节假日建议 0:00 准时抢。</td>
           </tr>
           <tr>
-            <td><strong>中山陵</strong><br><span class="sm">紫金山南麓</span></td>
+            <td><strong>中山陵</strong><br><span class="sm">Day2 下午 · 紫金山南麓</span></td>
             <td>免费</td>
             <td>提前 <strong>1–3 天</strong>预约</td>
             <td>「中山陵园票务」公众号</td>
-            <td>周一闭馆；墓室仅周二至周五开放。预约时段需按实际到访时间选。</td>
+            <td>周一闭馆；墓室仅周二至周五开放。<strong>预约时选下午时段</strong>，与本行程一致。</td>
           </tr>
           <tr>
-            <td><strong>南京城墙博物馆</strong><br><span class="sm">中华门瓮城东侧</span></td>
+            <td><strong>明孝陵</strong><br><span class="sm">Day2 上午</span></td>
+            <td>70 元</td>
+            <td>现场购票</td>
+            <td>景区售票处 / 线上</td>
+            <td>无需预约，6:30–18:00 开放。上午人少、光线好。</td>
+          </tr>
+          <tr>
+            <td><strong>台城城墙 · 鸡鸣寺</strong><br><span class="sm">Day3 下午</span></td>
+            <td>30 元 / 10 元</td>
+            <td>现场购票</td>
+            <td>登城口 / 山门售票处</td>
+            <td>城墙 8:30–17:00，鸡鸣寺 7:30–17:00（17:30 停止入场）。都无需预约。<strong>Day3 是返程日，16:10 必须下墙</strong>。</td>
+          </tr>
+          <tr>
+            <td><strong>音乐台 · 美龄宫</strong><br><span class="sm">Day2 下午</span></td>
+            <td>10 元 / 30 元</td>
+            <td>现场购票</td>
+            <td>景区售票处</td>
+            <td>无需预约。美龄宫 7:30–17:30，注意 17:00 前赶到。</td>
+          </tr>
+          <tr>
+            <td><strong>备选：南京城墙博物馆</strong><br><span class="sm">中华门瓮城东侧</span></td>
             <td>免费</td>
             <td>提前 <strong>1 天</strong>实名预约<br>分上下午场</td>
             <td>「南京城墙」公众号</td>
-            <td><strong>不接受现场预约</strong>；<strong>上午场须当日 13:00 前入馆</strong>，过时作废。</td>
+            <td><strong>不接受现场预约</strong>；上午场须当日 13:00 前入馆，过时作废。本行程不去，列作备选。</td>
           </tr>
           <tr>
-            <td><strong>中国科举博物馆</strong><br><span class="sm">夫子庙内 · 江南贡院</span></td>
+            <td><strong>备选：中国科举博物馆</strong><br><span class="sm">夫子庙内 · 江南贡院</span></td>
             <td>50 元<br><span class="sm">半价 25 元</span></td>
             <td>可现场购票</td>
             <td>现场 / 线上均可</td>
@@ -738,17 +1170,24 @@ footer p+p{margin-top:6px;font-size:12.5px}
     </div>
 
     <div class="bk-notes">
-      <div class="bk-note">
-        <h4>① 抢票倒排（假设 Day2 去南博）</h4>
-        <p>Day2 前 7 天的 18:00 抢南博 → Day2 前 2 天的 0:00 抢总统府 → Day1 前 1–3 天约中山陵。三个闹钟分三天设，不要挤在同一天。</p>
+      <div class="bk-note bk-note-hot">
+        <h4>① 抢票倒排（按本行程：D 日出发）</h4>
+        <p><strong>D-7 的 18:00</strong> → 抢 Day3 上午的南博票（最紧张，一次性放完，17:58 蹲守；<strong>南博 9:00 开馆，Day3 上午进馆最稳</strong>）<br>
+        <strong>D-3</strong> → 约 Day2 的中山陵，<strong>选下午时段</strong><br>
+        <strong>D-2 的 0:00</strong> → 抢 Day1 的总统府票<br>
+        三个闹钟分三天设，不要挤在同一天。南博最容易抢光，务必最先设。</p>
       </div>
       <div class="bk-note">
         <h4>② 周一避雷</h4>
-        <p>南京绝大多数博物馆周一闭馆（南博、总统府、朝天宫、六朝、江宁织造、城墙博物馆均闭）。<strong>若行程含周一，当天只排：明孝陵、中山陵景区外围、玄武湖、颐和路、夫子庙街区、科举博物馆（全年无休）</strong>。</p>
+        <p>南京绝大多数博物馆周一闭馆（南博、总统府、朝天宫、六朝、江宁织造、城墙博物馆均闭）。<strong>若行程含周一，当天只能排：明孝陵、音乐台、美龄宫、台城城墙、鸡鸣寺、颐和路、夫子庙与老门东街区、科举博物馆（全年无休）</strong>——即把 Day2 上午段与 Day3 下午段拼成一天，南博必须挪到非周一。</p>
       </div>
       <div class="bk-note">
-        <h4>③ 其他票价参考</h4>
-        <p>瞻园：白天 30 元 / 夜场 70 元（17:00–23:00）；六朝博物馆 30 元；朝天宫（南京市博物馆）25 元；江宁织造博物馆 20 元；灵谷寺 35 元；台城城墙 30 元；鸡鸣寺 10 元；音乐台 10 元；明孝陵 70 元；美龄宫 30 元。</p>
+        <h4>③ 六朝博物馆：不用抢，现场买，Day1 固定站</h4>
+        <p>门票 30 元，<strong>可现场购票</strong>，也可在「南京六朝博物馆」公众号提前买；<strong>周一闭馆</strong>；开放 9:00–17:30，<strong>17:00 停止入场</strong>。11 月 18 日是<strong>周二</strong>，正常开放。它就在总统府隔壁（长江路 302 号，东侧步行 3 分钟），已定为 Day1 <strong>11:00–12:00 的固定一站，排在总统府之前</strong>（12:00 长江路午饭，总统府 13:00 进），不需要为它做任何预约。</p>
+      </div>
+      <div class="bk-note">
+        <h4>④ 其他票价参考</h4>
+        <p>瞻园：白天 30 元 / 夜场 70 元（17:00–23:00）；六朝博物馆 30 元；朝天宫（南京市博物馆）25 元；江宁织造博物馆 30 元；灵谷寺 35 元；台城城墙 30 元；鸡鸣寺 10 元；音乐台 10 元；明孝陵 70 元；美龄宫 30 元。</p>
       </div>
     </div>
   </div>
@@ -795,7 +1234,7 @@ footer p+p{margin-top:6px;font-size:12.5px}
         <span class="og-letter">B</span>
         <div>
           <h3>Day 2 · 南博怎么排 + 夜里怎么游</h3>
-          <p>核心矛盾：南博 3.5 小时值不值，以及画舫不坐之后夜游怎么替代。</p>
+          <p>核心矛盾：南博 3.5 小时值不值，以及夜游怎么选（步行 / 画舫 / 城墙 / 瞻园）。</p>
         </div>
       </div>
       <div class="opt-list">
@@ -807,25 +1246,34 @@ footer p+p{margin-top:6px;font-size:12.5px}
         </div>
         <div class="opt">
           <div class="opt-head"><span class="opt-id">B2</span></div>
-          <h4>换六朝博物馆，省 1.5 小时</h4>
-          <p>30 元，长江路 302 号，就在总统府隔壁，贝聿铭事务所设计的竹影光影极出片。小而精，1.5 小时看完，省下的时间给老门东。</p>
+          <h4>Day1 下午若还想加馆：江宁织造博物馆 <span class="tl-tag">同价 30 元</span></h4>
+          <p>六朝已固定排在总统府之前，这里只剩江宁织造一个馆可选。两家都在长江路、都在总统府步行 5 分钟内、都是 30 元、都周一闭馆。<strong>六朝胜在建筑光影与青瓷，但展品量小（约 1200 件）、1 小时可看完</strong>；江宁织造胜在云锦 + 旗袍 + 红楼梦 + 室内小园林四合一，内容更「有故事」、更出片。<strong>若你更看重文物量与故事性，可以拿江宁织造换掉六朝</strong>（两者都 30 元、都在长江路，时间也差不多）。<strong>注意</strong>：现在 Day1 下午整块留给了老门东，两个都看会挤掉老门东的 1.5 小时，不建议；真想加，就把老门东压回 1 小时。</p>
           <div class="opt-meta"><span>耗时 1.5 h</span><span>票价 30 元</span><span>周一闭馆</span></div>
         </div>
         <div class="opt">
           <div class="opt-head"><span class="opt-id">B3</span></div>
-          <h4>加江宁织造博物馆</h4>
-          <p>20 元，大行宫地铁口，红楼梦与云锦主题，1 小时可看完。适合 Day2 时间富裕或对织造/红楼感兴趣。</p>
-          <div class="opt-meta"><span>耗时 +1 h</span><span>票价 20 元</span><span>周一闭馆</span></div>
+          <h4>季节限定：把总统府后的时段换成朝天宫（南京市博物馆）</h4>
+          <p>25 元，秦淮区朝天宫 4 号，江南现存规模最大的明清官式古建筑群，馆藏十万余件。<strong>11 月 10–25 日是朝天宫银杏的最佳拍照窗口</strong>，11 月 18 日正在其中，二进院那株古银杏 + 红墙黄叶是南京秋天的经典画面。人比六朝少很多，宫殿 + 博物馆 + 后花园一次看完，约 2 小时。代价：位置在城西南，地铁 1 号线张府园站步行约 1.1 km，需从总统府打车 15 分钟，且要压缩老门东到 1 小时。</p>
+          <div class="opt-meta"><span>耗时 2 h</span><span>票价 25 元</span><span>周一闭馆</span></div>
         </div>
       </div>
 
-      <div class="opt-sub">夜游方式 · 三选一（画舫已排除）</div>
+      <div class="opt-sub">夜游方式 · 四选一（画舫列为候选项）</div>
       <div class="opt-list">
         <div class="opt opt-default">
           <div class="opt-head"><span class="opt-id">B4</span><span class="opt-badge">默认</span></div>
           <h4>夫子庙 + 秦淮河 步行夜游</h4>
-          <p>不坐画舫，沿河岸步道走：天下文枢牌坊 → 泮池 → 乌衣巷 → 文德桥。灯影倒映水面，走路看更自由，可随时停下拍照。<strong>想清净就往东多走 10 分钟</strong>到乌衣巷—桃叶渡一段（王导谢安纪念馆、桃叶渡口），人立刻少一半。</p>
+          <p>沿河岸步道走：天下文枢牌坊 → 泮池 → 乌衣巷 → 文德桥。灯影倒映水面，走路看更自由，可随时停下拍照。<strong>想清净就往东多走 10 分钟</strong>到乌衣巷—桃叶渡一段（王导谢安纪念馆、桃叶渡口），人立刻少一半。</p>
           <div class="opt-meta"><span>耗时 2–3 h</span><span>免费</span><span>人多但可接受</span></div>
+        </div>
+        <div class="opt">
+          <div class="opt-head"><span class="opt-id">B7</span><span class="opt-badge">候选</span></div>
+          <h4>秦淮河画舫（夜游）</h4>
+          <p>从水面看灯影，和岸上完全是两个视角：船一开，两岸灯影在水里拖成长条，文德桥、泮池、大照壁逐个从头顶过去。上船点主要在<b>泮池码头</b>（夫子庙正门）与<b>东关头</b>，夜场约 17:30 起，全程 40–60 分钟。票价大致 80–120 元/人，分普通画筋与带讲解的游船。
+          <br><b>什么时候值得坐</b>：工作日晚上（11/18 是周二）排队比节假日短很多；若当天步行已累、又想看水面视角，坐船比再走一小时划算。
+          <br><b>什么时候跳过</b>：排队超过 40 分钟、或当天已经走了一整天（Day1 步行约 7 km），就按 B4 走路，看灯影的效果并不差。
+          <br><b>与 B4 的关系</b>：二选一，不要都做。坐船就把步行线压到文德桥 → 乌衣巷，下船后直接回酒店。</p>
+          <div class="opt-meta"><span>耗时 40–60 min</span><span>约 80–120 元</span><span>看排队再定</span></div>
         </div>
         <div class="opt">
           <div class="opt-head"><span class="opt-id">B5</span></div>
@@ -841,7 +1289,7 @@ footer p+p{margin-top:6px;font-size:12.5px}
         </div>
       </div>
       <div class="opt-meta opt-meta-excl">
-        <span>已排除：秦淮河画舫（约 80–120 元/人，40–60 分钟，节假日排队 1 h 以上）</span>
+        <span>已排除：科举博物馆（需 1.5 h，与夜游冲突）</span>
       </div>
     </div>
 
@@ -850,27 +1298,27 @@ footer p+p{margin-top:6px;font-size:12.5px}
       <div class="opt-group-head">
         <span class="og-letter">C</span>
         <div>
-          <h3>Day 3 下午 · 城墙下来之后去哪</h3>
-          <p>默认 C1 + C2 都排进去；若想放慢节奏，可只选一个。</p>
+          <h3>Day 3 下午 · 返程日的取舍（16:30 必须收工）</h3>
+          <p>默认已排 C2（颐和路 1 小时）+ 鸡鸣寺 → 解放门 → 玄武门。若想放慢，可砍掉 C2 颐和路，把南博看到 12:30。</p>
         </div>
       </div>
       <div class="opt-list">
         <div class="opt opt-default">
-          <div class="opt-head"><span class="opt-id">C1</span><span class="opt-badge">默认</span></div>
+          <div class="opt-head"><span class="opt-id">C1</span></div>
           <h4>玄武湖环湖（部分）</h4>
-          <p>免费。玄武门进，走环洲 → 樱洲 → 菱洲一段，湖上看城墙与紫金山倒影。全环约 10 km，不建议走完。</p>
-          <div class="opt-meta"><span>耗时 2 h</span><span>票价 免费</span><span>自然向 · 最省力</span></div>
+          <p>免费。玄武门进，走环洲 → 樱洲 → 菱洲一段，湖上看城墙与紫金山倒影。全环约 10 km，不建议走完。<strong>返程日只到门口看一眼，不环湖</strong>；若想环湖，需砍掉颐和路并把玄武门离场提前到 15:30。</p>
+          <div class="opt-meta"><span>耗时 2 h</span><span>票价 免费</span><span>返程日不建议</span></div>
         </div>
         <div class="opt opt-default">
           <div class="opt-head"><span class="opt-id">C2</span><span class="opt-badge">默认</span></div>
           <h4>颐和路民国公馆区</h4>
-          <p>免费。1700 多户官邸公馆藏在梧桐深处，不排队、不收费，南京最出片的散步路线。江苏路 → 颐和路 → 珞珈路 → 牯岭路。</p>
-          <div class="opt-meta"><span>耗时 2 h</span><span>票价 免费</span><span>人文向 · 出片</span></div>
+          <p>免费。1700 多户官邸公馆藏在梧桐深处，不排队、不收费，南京最出片的散步路线。江苏路 → 颐和路 → 珞珈路 → 牯岭路。<strong>已排进 Day3 12:30–13:40</strong>，1 小时走小环。</p>
+          <div class="opt-meta"><span>耗时 1 h</span><span>票价 免费</span><span>人文向 · 出片</span></div>
         </div>
         <div class="opt">
           <div class="opt-head"><span class="opt-id">C3</span></div>
           <h4>想再补一个馆（四选一）</h4>
-          <p>若想把下午换成室内，从下面挑一个；都是 1.5 h 左右，不叠加。</p>
+          <p>若想把下午换成室内，从下面挑一个；都是 1.5 h 左右，不叠加。<strong>返程日时间不够，基本用不上</strong>，留作备选。</p>
           <ul>
             <li><strong>朝天宫（南京市博物馆）</strong>25 元 · 江南最大明清官式古建群，红墙黄瓦，周一闭馆</li>
             <li><strong>南京城墙博物馆</strong>免费 · 讲透城砖铭文，紧邻中华门瓮城，须提前 1 天预约</li>
@@ -895,18 +1343,18 @@ footer p+p{margin-top:6px;font-size:12.5px}
           <div class="opt-head"><span class="opt-id">D1</span><span class="opt-badge">默认</span></div>
           <h4>标准版：每天 3–4 个点</h4>
           <p>本页行程即此版。每天 8:30 出门、18:30 收工，既有经典景点也有博物馆，体力要求中等。</p>
-          <div class="opt-meta"><span>强度 ★★★</span><span>覆盖 11 处</span><span>推荐首次来</span></div>
+          <div class="opt-meta"><span>强度 ★★★</span><span>覆盖 13 处</span><span>推荐首次来</span></div>
         </div>
         <div class="opt">
           <div class="opt-head"><span class="opt-id">D2</span></div>
           <h4>紧凑版：每天 5 个点</h4>
-          <p>每天 8:00 出门、20:00 收工，Day1 加灵谷寺、Day2 加六朝或江宁织造、Day3 加城墙博物馆。适合体力好、只来一次的人。</p>
+          <p>每天 8:00 出门、20:00 收工，Day1 加科举博物馆、Day2 加灵谷寺、Day3 加城墙博物馆。适合体力好、只来一次的人。</p>
           <div class="opt-meta"><span>强度 ★★★★★</span><span>覆盖 15 处</span><span>会很累</span></div>
         </div>
         <div class="opt">
           <div class="opt-head"><span class="opt-id">D3</span></div>
           <h4>松弛版：每天 2 个点</h4>
-          <p>每天 9:30 出门、17:00 收工，砍掉音乐台、鸡鸣寺或颐和路，留出咖啡馆和午休时间。适合带长辈或小孩。</p>
+          <p>每天 9:30 出门、17:00 收工，砍掉音乐台、鸡鸣寺或美龄宫，留出咖啡馆和午休时间。适合带长辈或小孩。</p>
           <div class="opt-meta"><span>强度 ★★</span><span>覆盖 7 处</span><span>不赶</span></div>
         </div>
       </div>
@@ -936,7 +1384,7 @@ footer p+p{margin-top:6px;font-size:12.5px}
       </div>
       <div class="opt-meta opt-meta-excl">
         <span>中华门瓮城已并入 B 组夜游</span>
-        <span>长江路 1912 街区已并入 Day2 晚饭</span>
+        <span>1912 街区已定为 Day1 午饭（周家二小姐的菜）</span>
         <span>科举博物馆见 C3</span>
       </div>
     </div>
@@ -945,8 +1393,8 @@ footer p+p{margin-top:6px;font-size:12.5px}
       <h3>需要你后续拍板的 4 件事</h3>
       <ol>
         <li><strong>A 组</strong>：Day1 加不加灵谷寺（A1 不加 / A2 加）</li>
-        <li><strong>B 组</strong>：南博还是六朝（B1/B2）；加不加江宁织造（B3）；夜游选哪种（B4 步行 / B5 城墙 / B6 瞻园）</li>
-        <li><strong>C 组</strong>：Day3 下午 C1、C2 可多选；想补馆再从 C3 里挑一个</li>
+        <li><strong>B 组</strong>：Day1 下午若还想加馆（B2 江宁织造 / B3 朝天宫）；夜游选哪种（B4 步行 / B7 画舫 / B5 城墙 / B6 瞻园）</li>
+        <li><strong>C 组</strong>：Day3 返程日默认 C2（颐和路）；要不要砍 C2 换南博多看 1 小时，你定</li>
         <li><strong>D 组</strong>：整体节奏走标准版、紧凑版还是松弛版</li>
       </ol>
       <p class="decide-tip">另外请告诉我<strong>出行日期与星期</strong>和<strong>住宿片区</strong>——这两项决定南博抢票倒排与周一闭馆避让。你把编号告诉我（例如「A1 + B1 + B4 + C1C2 + D1」），我再出定稿版。</p>
@@ -967,7 +1415,7 @@ footer p+p{margin-top:6px;font-size:12.5px}
         <div class="stay-badge">推荐</div>
         <h3>新街口</h3>
         <p class="stay-sub">1 / 2 号线换乘枢纽</p>
-        <p>去钟山坐 2 号线直达，去大行宫两站，去玄武湖两站。吃饭、购物、打车全方便，酒店从快捷到五星都有。</p>
+        <p>去钟山坐 2 号线直达，去大行宫两站，去城南秦淮也方便。吃饭、购物、打车全方便，酒店从快捷到五星都有。</p>
         <div class="stay-meta">通勤最省 · 夜间最热闹 · 房价中等偏上</div>
       </article>
       <article class="stay-card">
@@ -985,8 +1433,8 @@ footer p+p{margin-top:6px;font-size:12.5px}
       <article class="stay-card">
         <h3>鼓楼 / 玄武门</h3>
         <p class="stay-sub">1 / 4 号线</p>
-        <p>紧邻玄武湖和颐和路，Day3 出门即景。适合把第三天当重点、且喜欢安静的人。</p>
-        <div class="stay-meta">Day3 最优 · 安静 · 商业配套一般</div>
+        <p>紧邻城墙与鸡鸣寺，Day3 下午出门即景，玄武门站 1 号线直达南京南（35 分钟），<strong>返程日拖箱子也不慌</strong>。适合喜欢安静、第三天要赶车的人。</p>
+        <div class="stay-meta">Day3 收尾最优 · 去南京南直达 · 商业配套一般</div>
       </article>
     </div>
 
@@ -1007,7 +1455,7 @@ footer p+p{margin-top:6px;font-size:12.5px}
         </div>
         <div class="food-item">
           <h4>狮子桥美食街</h4>
-          <p>Day3 午餐首选，湖南路一带。牛肉锅贴、小笼包、鸭油酥烧饼、糖粥藕一条街吃过去。</p>
+          <p>湖南路一带，牛肉锅贴、小笼包、鸭油酥烧饼、糖粥藕一条街吃过去。离鸡鸣寺、玄武门都近，<strong>返程日若砍掉颐和路，可把午饭挪到这里</strong>。</p>
         </div>
         <div class="food-item">
           <h4>老门东小吃</h4>
@@ -1181,7 +1629,7 @@ footer p+p{margin-top:6px;font-size:12.5px}
     <div class="layout-note">
       <div class="ln-icon">✎</div>
       <div>
-        <strong>预算参考（不含住宿与交通）：</strong>门票约 245 元/人（中山陵免费 + 音乐台 10 + 明孝陵 70 + 美龄宫 30 + 总统府 35 + 台城 30 + 鸡鸣寺 10 + 玄武湖免费 + 颐和路免费）。餐饮按 100–150 元/天，三天约 300–450 元。
+        <strong>预算参考（不含住宿与交通）：</strong>门票约 235 元/人（总统府 35 + 六朝博物馆 30 + 明孝陵 70 + 中山陵免费 + 音乐台 10 + 美龄宫 30 + 台城 30 + 鸡鸣寺 10 + 南博免费 + 颐和路、老门东与夫子庙免费；Day1 下午若再进江宁织造另加 30 元，秦淮画舫另计 80–120 元/人）。餐饮按 100–150 元/天，三天约 300–450 元。<strong>Day3 返程日额外留 50–80 元打车/伴手礼</strong>（颐和路 → 鸡鸣寺一段建议打车）。
       </div>
     </div>
   </div>
