@@ -1,3 +1,4 @@
 assets/images/*.jpg binary
 assets/images/*.png binary
 assets/images/*.webp binary
+assets/images/*.avif binary

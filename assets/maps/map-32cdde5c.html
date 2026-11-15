@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Day 1 · 大行宫 → 城南秦淮</title>
+<title>Day 1 · 南京南 → 雨花台 → 总统府 → 秦淮</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <style>
   html,body,#map{height:100%;margin:0;background:#f8fafc}
@@ -11,10 +11,10 @@
 </style>
 </head>
 <body>
-<div id="map" role="img" aria-label="Day 1 · 大行宫 → 城南秦淮"></div>
+<div id="map" role="img" aria-label="Day 1 · 南京南 → 雨花台 → 总统府 → 秦淮"></div>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const data = {"title": "Day 1 · 大行宫 → 城南秦淮", "points": [{"name": "南京站（抵达）", "lat": 32.0885, "lon": 118.7972}, {"name": "新街口 / 大行宫（放行李·午饭）", "lat": 32.0451, "lon": 118.7845}, {"name": "总统府", "lat": 32.0457, "lon": 118.7919}, {"name": "老门东", "lat": 32.0179, "lon": 118.7835}, {"name": "夫子庙 · 秦淮河", "lat": 32.0209, "lon": 118.7881}], "routes": [{"from": [32.0885, 118.7972], "to": [32.0451, 118.7845], "label": "地铁 1/3 号线"}, {"from": [32.0451, 118.7845], "to": [32.0457, 118.7919], "label": "步行 10 分钟"}, {"from": [32.0457, 118.7919], "to": [32.0179, 118.7835], "label": "地铁 3 号线 2 站"}, {"from": [32.0179, 118.7835], "to": [32.0209, 118.7881], "label": "步行 15 分钟"}]};
+const data = {"title": "Day 1 · 南京南 → 雨花台 → 总统府 → 秦淮", "points": [{"name": "南京南站（10:21 抵达）", "lat": 31.968, "lon": 118.7969}, {"name": "中华门站（1 号线 5 站）", "lat": 32.0085, "lon": 118.7788}, {"name": "雨花台北门（进）", "lat": 32.0012, "lon": 118.7745}, {"name": "雨花台南门（出）", "lat": 31.9968, "lon": 118.7799}, {"name": "新街口 · 德基广场（午饭）", "lat": 32.0451, "lon": 118.7845}, {"name": "总统府", "lat": 32.0457, "lon": 118.7919}, {"name": "老门东（武定门站）", "lat": 32.0179, "lon": 118.7835}, {"name": "夫子庙 · 秦淮河", "lat": 32.0209, "lon": 118.7881}], "routes": [{"from": [31.968, 118.7969], "to": [32.0085, 118.7788], "label": "地铁 1 号线 5 站 · 20 分钟"}, {"from": [32.0085, 118.7788], "to": [32.0012, 118.7745], "label": "3 号口步行 500–700 米"}, {"from": [32.0012, 118.7745], "to": [31.9968, 118.7799], "label": "园内北门 → 南门 2 小时"}, {"from": [31.9968, 118.7799], "to": [32.0085, 118.7788], "label": "打车回中华门站"}, {"from": [32.0085, 118.7788], "to": [32.0451, 118.7845], "label": "1 号线 3 站到新街口"}, {"from": [32.0451, 118.7845], "to": [32.0457, 118.7919], "label": "步行 15 分钟"}, {"from": [32.0457, 118.7919], "to": [32.0179, 118.7835], "label": "3 号线 大行宫 → 武定门"}, {"from": [32.0179, 118.7835], "to": [32.0209, 118.7881], "label": "步行 15 分钟"}]};
 const map = L.map("map", {scrollWheelZoom: true});
 // Street tiles: Esri (no key). OSMF and Carto basemaps reject or watermark app use.
 const TILES = [
